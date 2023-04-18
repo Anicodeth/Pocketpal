@@ -2,16 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { Configuration, OpenAIApi } = require("openai");
 const cors = require('cors');
-const router = express.Router();
 const app = express();
 const jwt = require('jsonwebtoken');
 const { User } = require('./Models/user');
+
+
+app.use(cors());
 
 
 //Open Ai Api Configuration
 const config = new Configuration({
   apiKey:  "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"
 });
+const openai = new OpenAIApi(config);
 
 mongoose.connect('mongodb+srv://afmtoday:OlxwPFCF0rLMnA3e@cluster0.edrrjyh.mongodb.net/pocketpal?retryWrites=true&w=majority')
 .then(() => console.log('Connected to MongoDB'))
@@ -20,6 +23,46 @@ mongoose.connect('mongodb+srv://afmtoday:OlxwPFCF0rLMnA3e@cluster0.edrrjyh.mongo
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+
+const sessionTrial = 5;
+const requestAi =async (prompt, sessionTrial, callback) => {
+  const response = await openai.createCompletion(
+  {
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 1,
+      max_tokens: 2048} ).catch(err => {
+          console.log("Error connecting");
+
+      });
+
+  console.log(sessionTrial);
+  if(response){
+  callback(response.data.choices[0].text);}
+  else if(sessionTrial == 0){
+      callback({prompt : "The Ai is too Crowded!"});
+  }
+  else{
+      console.log("Retrying...")
+      requestAi(prompt,  sessionTrial - 1, callback);
+  }
+}
+
+
+app.get('/ai/:prompt', (req, res) =>{
+
+  //Passed Query
+  const prompt = (req.params.prompt);
+
+  //Search if job already exists in database
+  
+          //Call Ai function
+          requestAi(prompt,sessionTrial, 
+          async (answer)=> {
+          res.json(answer);
+});
+});
 
 // Endpoint for user sign-up
 app.post('/signup', async (req, res) => {
@@ -149,8 +192,76 @@ app.post('/budgets', async (req, res) => {
   }
 });
 
+app.delete('/budgets/:budgetIndex/expenses/:expenseIndex',  async (req, res) => {
+ 
+  const token = req.header('Authorization').replace('Bearer ', '');
+  const decoded = jwt.verify(token, process.env.JWT_SECRET || "Ananya");
+
+  try {
+    const userId = decoded.userId;
+    const budgetIndex = req.params.budgetIndex;
+    const expenseIndex = req.params.expenseIndex;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    const budget = user.budgets[budgetIndex];
+    if (!budget) {
+      return res.status(404).json({ message: 'Budget not found' });
+    }
+    
+    const expense = budget.expenses[expenseIndex];
+    if (!expense) {
+      return res.status(404).json({ message: 'Expense not found' });
+    }
+    
+    if (user._id.toString() !== userId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    
+    budget.expenses.splice(expenseIndex, 1);
+    await user.save();
+    
+    res.status(200).json({ message: 'Expense deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+app.delete('/budget/:index',  async (req, res) => {
 
 
+  const token = req.header('Authorization').replace('Bearer ', '');
+  const decoded = jwt.verify(token, process.env.JWT_SECRET || "Ananya");
+
+
+  const userId = decoded.userId;
+  const index = req.params.index;
+
+  const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    const budget = user.budgets;
+    if (!budget) {
+      return res.status(404).json({ message: 'Budget not found' });
+    }
+    
+    if (user._id.toString() !== userId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    
+    budget.splice(index, 1);
+    await user.save();
+    
+    res.status(200).json({ message: 'Budget deleted successfully' });
+
+
+});
 
 const PORT = process.env.PORT || 4000;
 // Start the server
