@@ -97,17 +97,18 @@ app.post('/budgets/:month/:year/expenses',  (req, res) => {
       // Find the budget object within the user object
       const budget = user.budgets.find(b => b.month == month && b.year == year);
 
-      console.log(budget);
+      
       
       // Add the new expense to the budget object
       budget.expenses.push({ name, amount, category });
       console.log(budget);
       // Save the updated user object
       user.save().then(() => {
+        console.log(user);
           res.status(200).json({ message: 'Expense added successfully' });
         })
         .catch(error => {
-          console.log(error);
+          
           res.status(500).json({ message: 'Internal server error' });
         });
     })
@@ -143,16 +144,18 @@ app.post('/budgets', async (req, res) => {
 
     res.status(201).send(budget);
   } catch (error) {
-    console.error(error);
+ 
     res.status(500).send({ message: 'Server error' });
   }
 });
 
 
+
+
 const PORT = process.env.PORT || 4000;
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server started on port ${POST}`);
+  console.log(`Server started on port ${PORT}`);
 });
 
 
