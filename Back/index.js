@@ -241,7 +241,7 @@ const requestAi =async (prompt, sessionTrial, callback) => {
       frequency_penalty:0.0,
       presence_penalty:0.6,
       stop : ['--'] } ).catch(err => {
-
+console.log(err)
           console.log("Error connecting");
 
       });
