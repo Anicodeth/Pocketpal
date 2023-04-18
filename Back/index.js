@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 const { User } = require('./Models/user');
+const { json } = require('express');
 
 
 app.use(cors());
@@ -12,7 +13,7 @@ app.use(cors());
 
 //Open Ai Api Configuration
 const config = new Configuration({
-  apiKey:  "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"
+  apiKey:  "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"
 });
 const openai = new OpenAIApi(config);
 
@@ -33,15 +34,16 @@ const requestAi =async (prompt, sessionTrial, callback) => {
       prompt: prompt,
       temperature: 1,
       max_tokens: 2048} ).catch(err => {
+        console.log(err);
           console.log("Error connecting");
 
       });
 
   console.log(sessionTrial);
   if(response){
-  callback(response.data.choices[0].text);}
+  callback({aianswer: (response.data.choices[0].text).replaceAll("\n", "") });}
   else if(sessionTrial == 0){
-      callback({prompt : "The Ai is too Crowded!"});
+      callback({aianswer : "The Ai is too Crowded!"});
   }
   else{
       console.log("Retrying...")
@@ -50,7 +52,7 @@ const requestAi =async (prompt, sessionTrial, callback) => {
 }
 
 
-app.get('/ai/:prompt', (req, res) =>{
+app.get('/ai/:prompt', async (req, res) =>{
 
   //Passed Query
   const prompt = (req.params.prompt);
