@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 const { User } = require('./Models/user');
-const { json } = require('express');
+
 
 
 app.use(cors());
@@ -26,45 +26,6 @@ mongoose.connect('mongodb+srv://afmtoday:OlxwPFCF0rLMnA3e@cluster0.edrrjyh.mongo
 app.use(express.json());
 
 
-const sessionTrial = 5;
-const requestAi =async (prompt, sessionTrial, callback) => {
-  const response = await openai.createCompletion(
-  {
-      model: "text-davinci-003",
-      prompt: prompt,
-      temperature: 1,
-      max_tokens: 2048} ).catch(err => {
-        console.log(err);
-          console.log("Error connecting");
-
-      });
-
-  console.log(sessionTrial);
-  if(response){
-  callback({aianswer: (response.data.choices[0].text).replaceAll("\n", "") });}
-  else if(sessionTrial == 0){
-      callback({aianswer : "The Ai is too Crowded!"});
-  }
-  else{
-      console.log("Retrying...")
-      requestAi(prompt,  sessionTrial - 1, callback);
-  }
-}
-
-
-app.get('/ai/:prompt', async (req, res) =>{
-
-  //Passed Query
-  const prompt = (req.params.prompt);
-
-  //Search if job already exists in database
-  
-          //Call Ai function
-          requestAi(prompt,sessionTrial, 
-          async (answer)=> {
-          res.json(answer);
-});
-});
 
 // Endpoint for user sign-up
 app.post('/signup', async (req, res) => {
@@ -264,6 +225,51 @@ app.delete('/budget/:index',  async (req, res) => {
 
 
 });
+
+
+
+
+
+const sessionTrial = 5;
+const requestAi =async (prompt, sessionTrial, callback) => {
+  const response = await openai.createCompletion(
+  {
+      model: "gpt-3.5-turbo",
+      prompt: prompt,
+      temperature: 3,
+      max_tokens: 3000} ).catch(err => {
+        console.log(err)
+          console.log("Error connecting");
+
+      });
+
+  console.log(sessionTrial);
+  if(response){
+  callback({aianswer: (response.data.choices[0].text).replaceAll("\n", "") });}
+  else if(sessionTrial == 0){
+      callback({aianswer : "The Ai is too Crowded!"});
+  }
+  else{
+      console.log("Retrying...")
+      requestAi(prompt,  sessionTrial - 1, callback);
+  }
+}
+
+
+app.get('/ai/:prompt', async (req, res) =>{
+
+  //Passed Query
+  const prompt = (req.params.prompt);
+
+  
+          //Call Ai function
+          requestAi(`${prompt}, if the sentence before this ism't a financial question reply saying, I only answer financial related questions`,sessionTrial, 
+          async (answer)=> {
+          res.json(answer);
+});
+});
+
+
 
 const PORT = process.env.PORT || 4000;
 // Start the server
