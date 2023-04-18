@@ -13,7 +13,7 @@ app.use(cors());
 
 //Open Ai Api Configuration
 const config = new Configuration({
-  apiKey:  "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"
+  apiKey:  "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"
 });
 const openai = new OpenAIApi(config);
 
@@ -209,7 +209,7 @@ app.delete('/budget/:index',  async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     
-    const budget = user.budgets;
+  const budget = user.budgets;
     if (!budget) {
       return res.status(404).json({ message: 'Budget not found' });
     }
@@ -233,12 +233,15 @@ app.delete('/budget/:index',  async (req, res) => {
 const sessionTrial = 5;
 const requestAi =async (prompt, sessionTrial, callback) => {
   const response = await openai.createCompletion(
-  {
-      model: "gpt-3.5-turbo",
-      prompt: prompt,
-      temperature: 3,
-      max_tokens: 3000} ).catch(err => {
-        console.log(err)
+    {
+      model:"text-davinci-003",
+      prompt : prompt,
+      temperature : 0.9,
+      max_tokens: 500,
+      frequency_penalty:0.0,
+      presence_penalty:0.6,
+      stop : ['--'] } ).catch(err => {
+
           console.log("Error connecting");
 
       });
@@ -263,7 +266,7 @@ app.get('/ai/:prompt', async (req, res) =>{
 
   
           //Call Ai function
-          requestAi(`${prompt}, if the sentence before this ism't a financial question reply saying, I only answer financial related questions`,sessionTrial, 
+          requestAi(`'${prompt}', Note: if the quoted question is not related to finance and money or related topics like economics, budgeting, investing and so on, reply that you only answer financial questions`,sessionTrial, 
           async (answer)=> {
           res.json(answer);
 });
