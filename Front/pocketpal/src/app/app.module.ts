@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -77,12 +77,11 @@ import { ChatComponent } from './dashboard-components/chat/chat.component';
   ],
   providers: [
     DataService,
-    ChatService
+    ChatService,
   ],
   bootstrap: [
     AppComponent,
     ReactiveFormsModule,
-  
   ],
 
 })
