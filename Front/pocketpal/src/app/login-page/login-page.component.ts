@@ -12,6 +12,7 @@ import {OnChanges} from "@angular/core"
 export class LoginPageComponent {
   public loginForm: FormGroup;
   public signupForm: FormGroup;
+  public mobileToggle:boolean = true;
 
 
   constructor(private service: AppserviceService, private fb: FormBuilder, private router: Router) {
@@ -29,7 +30,11 @@ export class LoginPageComponent {
   isClassActive : boolean = false;
 
   cheaker(){
-    this.isClassActive = ! this.isClassActive;
+    this.isClassActive = !this.isClassActive;
+  }
+
+  toggle(){
+    this.mobileToggle = !this.mobileToggle;
   }
   //function to handle the login functionality
   login() {

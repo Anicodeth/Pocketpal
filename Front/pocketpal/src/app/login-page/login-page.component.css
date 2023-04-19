@@ -225,3 +225,45 @@ input {
   height: 40px;
   width: 40px;
 }
+
+.mobile-sign-in{
+  display:none;
+  transition: 2s linear;
+}
+.mobile-sign-up{
+  display: none;
+}
+.sign-up{
+  margin-top: 1rem;
+  font-weight: bold;
+}
+.sign-up:hover{
+color:blue;
+transition: 0.5s linear;
+
+}
+@media (max-width: 650px) {
+.container{
+  display:none;
+}
+.mobile-sign-in{
+  display:flex;
+  z-index: 1000;
+  height:30rem;
+  width:90%;
+
+}
+.mobile-sign-up{
+  display:flex;
+  z-index: 1000;
+  height:30rem;
+  width:90%;
+}
+input{
+  height:3rem;
+  width: 18rem;
+}
+form{
+  width:100%;
+}
+}
