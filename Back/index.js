@@ -9,8 +9,6 @@ const { User } = require('./Models/user');
 
 
 app.use(cors({
-  allowedHeaders: ["authorization", "Content-Type"], // you can change the headers
-  exposedHeaders: ["authorization"], // you can change the headers
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false
@@ -53,7 +51,9 @@ app.post('/signin', async (req, res) => {
   try {
     // Check if the email and password are valid
     const { email, password } = req.body;
+ 
     const user = await User.findOne({email: email, password: password});
+
     if (!user) {
       throw new Error('Invalid email or password');
     }

@@ -8,11 +8,13 @@ export class AppserviceService {
   constructor(private http: HttpClient) {}
 
   signUp(name: string, password: string, email: string) {
+
     let body = { name: name, password: password, email: email };
     return this.http.post('http://Pocket-pal-api.vercel.app/signup', body);
   }
 
   signIn(email: string, password: string) {
+
     let body = { email: email, password: password };
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
   }
