@@ -27,7 +27,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 
-import { TableComponent } from './partials/table/table.component';
+import { TableComponent } from './dashboard-components/partials/table/table.component';
 import { ProfileComponent } from './dashboard-components/profile/profile.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -37,9 +37,16 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './dashboard-components/chat/chat.component';
-import { LineChartComponent } from './partials/line-chart/line-chart.component';
-import { BarChartComponent } from './partials/bar-chart/bar-chart.component';
-import { PieChartComponent } from './partials/pie-chart/pie-chart.component';
+import { LineChartComponent } from './dashboard-components/partials/line-chart/line-chart.component';
+import { BarChartComponent } from './dashboard-components/partials/bar-chart/bar-chart.component';
+import { PieChartComponent } from './dashboard-components/partials/pie-chart/pie-chart.component';
+
+import { BudgetComponent } from './dashboard-components/budget-components/budget/budget.component';
+import { AddBudgetComponent } from './dashboard-components/budget-components/add-budget/add-budget.component';
+import { AddIncomeComponent } from './dashboard-components/budget-components/add-income/add-income.component';
+import { AddExpenseComponent } from './dashboard-components/budget-components/add-expense/add-expense.component';
+import { ApiService } from './services/api.service';
+import { AiService } from './services/ai.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +62,10 @@ import { PieChartComponent } from './partials/pie-chart/pie-chart.component';
     LineChartComponent,
     BarChartComponent,
     PieChartComponent,
+    BudgetComponent,
+    AddBudgetComponent,
+    AddIncomeComponent,
+    AddExpenseComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +93,8 @@ import { PieChartComponent } from './partials/pie-chart/pie-chart.component';
   providers: [
     DataService,
     ChatService,
+    ApiService,
+    AiService,
   ],
   bootstrap: [
     AppComponent,

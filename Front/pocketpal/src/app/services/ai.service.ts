@@ -6,12 +6,14 @@ import { HttpClient } from '@angular/common/http';
 export class AiService {
   responseData: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+    ) { }
 
   sendBotRequest(prompt: string) {
-    const promptUrl = `https://pocket-pal-api.vercel.app/ai/:${prompt}`;
+    const aiChatEndPoint = `https://pocket-pal-api.vercel.app/ai/:${prompt}`;
 
-    this.http.get(promptUrl).subscribe(response => {
+    this.http.get(aiChatEndPoint).subscribe(response => {
       this.responseData = response;
     });
   }

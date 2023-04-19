@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-content>
+        <div class="main-report">
+            <div class="title">
+                <h2>Current Ongoing Budgets</h2>
+            </div>
+            <app-pie-chart [chartData]="budgetData"></app-pie-chart>
+        </div>
+    </mat-card-content>
+</mat-card>
+<h3>Choose Your Action</h3>
+<div class="action-buttons-row">
+    <button (click)="onAddBudget()" class="action-button" mat-fab extended color="primary">
+        <mat-icon>beach-umbrella</mat-icon>
+        Add Budget
+    </button>
+    <button (click)="onAddIncome()" class="action-button" mat-fab extended color="primary">
+        <mat-icon>favorite</mat-icon>
+        Add Income
+    </button>
+    <button (click)="onAddExpense()" class="action-button" mat-fab extended color="primary">
+        <mat-icon>money</mat-icon>
+        Add Expense
+    </button>
+</div>

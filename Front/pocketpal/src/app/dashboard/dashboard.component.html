@@ -7,7 +7,7 @@
             <mat-divider></mat-divider>
             <a mat-list-item (click)="showDashboard()"><i class="fa-solid fa-chart-line fa-xl"></i>Dashboard</a>
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showReports()"><i class="fa-solid fa-flag fa-xl"></i>Reports</a>
+            <a mat-list-item (click)="showReports()"><i class="fa-solid fa-flag fa-xl"></i>Budgets, Incomes and Expenses</a>
             <mat-divider></mat-divider>
             <a mat-list-item (click)="showLinks()"><i class="fa-solid fa-bookmark fa-xl"></i> Useful Financial Literacy Links</a>
             <mat-divider></mat-divider>
@@ -30,9 +30,7 @@
             <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
         </div>
         <div *ngIf="currentlyOnDisplay == 1">
-            <app-pie-chart></app-pie-chart>
-            <app-bar-chart></app-bar-chart>
-            <app-line-chart></app-line-chart>
+            <app-budget></app-budget>
         </div>
         <div *ngIf="currentlyOnDisplay == 4">
             <app-profile></app-profile>
