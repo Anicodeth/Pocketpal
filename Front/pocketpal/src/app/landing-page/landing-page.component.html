@@ -13,13 +13,28 @@
 <body onscroll="navbar()">
   <header class="header">
     <div class="navbar">
-      <a class="fa-solid fa-bars" routerLink="/loginPage" id="open-menu" onclick="openMenu()"><h1 class = "logicon">+</h1></a>
-
+      <i class="fa-solid fa-bars" id="open-menu" onclick="openMenu()"></i>
+      <div class="menu">
+        <i class="fa-solid fa-xmark" id="close-menu" onclick="closeMenu()"></i>
+        <div class="nav-content">
+          <a href="#" onclick="closeMenu()">Home</a>
+          <a href="./login_signup.html" onclick="closeMenu()">Sign-in / Log-in</a>
+        </div>
+        <div class="menu-icons">
+          <a href="https://www.facebook.com/" target="_blank"><i
+              class="fa fa-facebook-official w3-hover-opacity"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+          <a href="https://www.snapchat.com/" target="_blank"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+          <a href="https://www.pinsterest.com/" target="_blank"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+          <a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+        </div>
+      </div>
       <a href="">
-        <h3 class="portfolio bold">PocketPal</h3>
+        <h3 class="portfolio" class="bold">PocketPal</h3>
       </a>
       <div class="links">
-        <a routerLink="/loginPage">Sign-in / Log-in</a>
+        <a routerLink="/dashboard">Sign-in / Log-in</a>
       </div>
     </div>
     <div class="content">

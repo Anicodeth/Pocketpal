@@ -1,21 +1,21 @@
 <div class="chat-container">
-    <div class="chat-body">
-      <div *ngFor="let message of messages" class="message-container" [ngClass]="{ 'left': message.author === 'bot', 'right': message.author === 'user' }">
-        <div class="message" [ngClass]="{ 'bot': message.author === 'bot', 'user': message.author === 'user' }">
-          {{ message.content }}
-        </div>
-      </div>
-      <div class="typing-indicator" *ngIf="showTypingIndicator">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="chat-body">
+    <div *ngFor="let message of messages" class="message-container"
+      [ngClass]="{ 'left': message.author === 'bot', 'right': message.author === 'user' }">
+      <div class="message" [ngClass]="{ 'bot': message.author === 'bot', 'user': message.author === 'user' }">
+        {{ message.content }}
       </div>
     </div>
-    <div class="chat-footer">
-      <div class="input-wrapper">
-        <input type="text" placeholder="Type your message here" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
-        <button (click)="sendMessage()">Send</button>
-      </div>
+    <div class="typing-indicator" *ngIf="showTypingIndicator">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
-  
+  <div class="chat-footer">
+    <div class="input-wrapper input">
+      <input class="input-box" type="text" placeholder="" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
