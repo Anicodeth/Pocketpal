@@ -28,7 +28,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 
 import { TableComponent } from './partials/table/table.component';
-import { PiechartComponent } from './partials/piechart/piechart.component';
 import { ProfileComponent } from './dashboard-components/profile/profile.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -38,19 +37,24 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './dashboard-components/chat/chat.component';
+import { LineChartComponent } from './partials/line-chart/line-chart.component';
+import { BarChartComponent } from './partials/bar-chart/bar-chart.component';
+import { PieChartComponent } from './partials/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     TableComponent,
-    PiechartComponent,
     LoginPageComponent,
     SignupPageComponent,
     AIpageComponent,
     LandingPageComponent,
     ProfileComponent,
     ChatComponent,
+    LineChartComponent,
+    BarChartComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,

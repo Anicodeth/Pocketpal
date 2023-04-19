@@ -30,7 +30,9 @@
             <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
         </div>
         <div *ngIf="currentlyOnDisplay == 1">
-            <app-piechart></app-piechart>
+            <app-pie-chart></app-pie-chart>
+            <app-bar-chart></app-bar-chart>
+            <app-line-chart></app-line-chart>
         </div>
         <div *ngIf="currentlyOnDisplay == 4">
             <app-profile></app-profile>
