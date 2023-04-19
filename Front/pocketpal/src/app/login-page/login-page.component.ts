@@ -27,6 +27,8 @@ export class LoginPageComponent {
     });
   }
 
+
+  isButtonDisabled : boolean = false;
   isClassActive : boolean = false;
 
   cheaker(){
@@ -36,36 +38,41 @@ export class LoginPageComponent {
   toggle(){
     this.mobileToggle = !this.mobileToggle;
   }
+
   //function to handle the login functionality
   login() {
+
+    this.isButtonDisabled = true;
+
     this.service
       .signIn(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((response: any) => {
-
-        this.service.userData = response
+        this.isButtonDisabled = false;
+        this.service.userData = response;
 
         sessionStorage.setItem('auth_token', response.token);
 
         this.router.navigateByUrl("/dashboard")
 
       }, (err) => {
-        console.log(err.message);
+        alert(err.message);
+        this.isButtonDisabled = false
       }
       
       );
   }
   //function to handle the signup functionality
   signup() {
-    console.log(13442)
+    this.isButtonDisabled = true;
     this.service
       .signUp(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password)
       
       .subscribe((response) => {
-        
-        console.log(response);
+        this.isButtonDisabled = true;
         this.cheaker()
         
       },(err)=>{
+        this.isButtonDisabled = true;
         alert(err.message)
       }
       );
