@@ -10,7 +10,7 @@ export class AppserviceService {
   userData: any;
   token = sessionStorage.getItem('auth_token')
 
-  signUp(name: string, password: string, email: string) {
+  signUp(name: string, email: string, password: string) {
     let body = { name: name, password: password, email: email };
     console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signup', body);
