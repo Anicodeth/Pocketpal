@@ -34,28 +34,12 @@ export class ApiService implements OnInit {
   getBudgetData() {
     const budgetData =  [
       {
-        name: 'Germany',
-        value: 40632,
+        name: 'Left',
+        value: 80,
       },
       {
-        name: 'United States',
-        value: 49737,
-      },
-      {
-        name: 'France',
-        value: 36745,
-      },
-      {
-        name: 'United Kingdom',
-        value: 36240,
-      },
-      {
-        name: 'Spain',
-        value: 33000,
-      },
-      {
-        name: 'Italy',
-        value: 35800,
+        name: 'Used Up',
+        value: 20,
       },
     ];
     return budgetData;

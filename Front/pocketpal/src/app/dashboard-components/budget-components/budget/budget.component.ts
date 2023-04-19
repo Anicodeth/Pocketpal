@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BudgetComponent {
   public budgetData: string;
+  public currentDisplay: string = 'main';
 
   constructor(
     private apiService: ApiService
@@ -15,13 +16,20 @@ export class BudgetComponent {
     this.budgetData = this.apiService.getBudgetData();
   }
 
+  onSeeBudget() {
+    this.currentDisplay = 'main';
+  }
+
   onAddBudget() {
+    this.currentDisplay = 'addBudget';
   }
 
   onAddIncome() {
+    this.currentDisplay = 'addIncome';
   }
 
   onAddExpense() {
+    this.currentDisplay = 'addExpense';
   }
 
 

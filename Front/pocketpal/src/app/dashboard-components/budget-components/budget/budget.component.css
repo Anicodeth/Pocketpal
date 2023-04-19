@@ -3,8 +3,27 @@
     margin: 0 auto;
 }
 
+.charts-row {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 1rem;
+}
+
+app-pie-chart {
+    margin: 0 auto;
+}
+
 mat-card {
     margin: 2rem;
+}
+
+.main {
+    margin: 0 15%;
+    text-align: center;
 }
 
 .action-buttons-row {
@@ -18,7 +37,13 @@ mat-card {
 }
 
 .action-button {
-    padding: 1rem 2rem;
-    margin: 2rem auto;
+    height: 60px;
+    width: 300px;
+    font-size: 24px;
+    margin: 0 auto;
 }
 
+.back-button {
+    margin: 2rem;
+    font-size: 1.5rem;
+}
