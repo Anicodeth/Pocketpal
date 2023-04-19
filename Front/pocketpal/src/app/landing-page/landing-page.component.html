@@ -1,139 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script
-      src="https://kit.fontawesome.com/320001bef3.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>PocketPal</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body onscroll="navbar()">
-    <header class="header">
-      <div class="navbar">
-        <i class="fa-solid fa-bars" id="open-menu" onclick="openMenu()"></i>
-        <div class="menu">
-          <i
-            class="fa-solid fa-xmark"
-            id="close-menu"
-            onclick="closeMenu()"
-          ></i>
-          <div class="nav-content">
-            <a href="#" onclick="closeMenu()">Home</a>
-            <a href="./login_signup.html" onclick="closeMenu()"
-              >Sign-in / Log-in</a
-            >
-          </div>
-          <div class="menu-icons">
-            <a href="https://www.facebook.com/" target="_blank"
-              ><i class="fa fa-facebook-official w3-hover-opacity"></i
-            ></a>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><i class="fa fa-instagram w3-hover-opacity"></i
-            ></a>
-            <a href="https://www.snapchat.com/" target="_blank"
-              ><i class="fa fa-snapchat w3-hover-opacity"></i
-            ></a>
-            <a href="https://www.pinsterest.com/" target="_blank"
-              ><i class="fa fa-pinterest-p w3-hover-opacity"></i
-            ></a>
-            <a href="https://www.twitter.com/" target="_blank"
-              ><i class="fa fa-twitter w3-hover-opacity"></i
-            ></a>
-            <a href="https://www.linkedin.com/" target="_blank"
-              ><i class="fa fa-linkedin w3-hover-opacity"></i
-            ></a>
-          </div>
+  <script src="https://kit.fontawesome.com/320001bef3.js" crossorigin="anonymous"></script>
+  <title>PocketPal</title>
+</head>
+
+<body onscroll="navbar()">
+  <header class="header">
+    <div class="navbar">
+      <i class="fa-solid fa-bars" id="open-menu" onclick="openMenu()"></i>
+      <div class="menu">
+        <i class="fa-solid fa-xmark" id="close-menu" onclick="closeMenu()"></i>
+        <div class="nav-content">
+          <a href="#" onclick="closeMenu()">Home</a>
+          <a href="./login_signup.html" onclick="closeMenu()">Sign-in / Log-in</a>
         </div>
-        <a href="">
-          <h3 class="portfolio" class="bold">PocketPal</h3>
-        </a>
-        <div class="links">
-          <a routerLink="/dashboard">Sign-in / Log-in</a>
+        <div class="menu-icons">
+          <a href="https://www.facebook.com/" target="_blank"><i
+              class="fa fa-facebook-official w3-hover-opacity"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+          <a href="https://www.snapchat.com/" target="_blank"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+          <a href="https://www.pinsterest.com/" target="_blank"><i class="fa fa-pinterest-p w3-hover-opacity"></i></a>
+          <a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
         </div>
       </div>
-      <div class="content">
-        <h3 class="name bold">PocketPal</h3>
-        <p class="desc shorttext">
-          The ultimate expense tracking tool for university students. Gain
-          control of your finances with ease. Sign up today!
-        </p>
-        <a routerLink="/loginPage"
-          ><button class="btn header-btn">Get Started</button></a
-        >
+      <a href="">
+        <h3 class="portfolio" class="bold">PocketPal</h3>
+      </a>
+      <div class="links">
+        <a routerLink="/dashboard">Sign-in / Log-in</a>
       </div>
-    </header>
-    <section class="about shorttext" id="about">
-      <h3 class ="bold">PocketPal</h3>
-      <p>
-        PocketPal is the ultimate web app for university students to track their
-        expenses and achieve their financial goals. With our budgeting tool,
-        financial education resources, user-friendly interface, and personal
-        financial assistant AI, PocketPal is designed to make managing finances
-        easy and stress-free. Sign up now to start taking control of your
-        finances with PocketPal.
+    </div>
+    <div class="content">
+      <h3 class="name bold">PocketPal</h3>
+      <p class="desc shorttext">
+        The ultimate expense tracking tool for university students. Gain
+        control of your finances with ease. Sign up today!
       </p>
-    </section>
+      <a routerLink="/loginPage"><button class="btn header-btn">Get Started</button></a>
+    </div>
+  </header>
+  <section class="about shorttext" id="about">
+    <h3 class="bold">PocketPal</h3>
+    <p>
+      PocketPal is the ultimate web app for university students to track their
+      expenses and achieve their financial goals. With our budgeting tool,
+      financial education resources, user-friendly interface, and personal
+      financial assistant AI, PocketPal is designed to make managing finances
+      easy and stress-free. Sign up now to start taking control of your
+      finances with PocketPal.
+    </p>
+  </section>
 
-    <section class="services" id="services">
-      <h3 class ="bold">Services</h3>
-      <div class="card-container">
-        <div class="card">
-          <img src="../assets/images/budget.png" alt="" />
-          <h3 class ="bold">Budgeting tool</h3>
-          <p>
-            A budgeting tool that will allow students to track their income and
-            expenses, and create a budget that reflects their financial goals
-          </p>
-          <a routerLink="/loginPage">
-            <button class="btn">Get Started</button></a
-          >
-        </div>
-        <div class="card">
-          <img src="../assets/images/resource.png" alt="" />
-          <h3 class ="bold" >Financial education resources</h3>
-          <p>
-            Access to financial education resources to help students improve
-            their financial literacy
-          </p>
-          <a routerLink="/loginPage">
-            <button class="btn">Get Started</button></a
-          >
-        </div>
-        <div class="card">
-          <img src="../assets/images/ui.png" alt="" />
-          <h3>User-friendly interface</h3>
-          <p>
-            A user-friendly interface that will be easy for students to navigate
-            and use
-          </p>
-
-          <a routerLink="/loginPage">
-            <button class="btn" >Get Started</button></a
-          >
-        </div>
-        <div class="card">
-          <img src="../assets/images/ai.png" alt="" />
-          <h3>Personal Financial Assistant AI</h3>
-          <p>
-            A personal AI assistant, using an API, to provide direct responses
-            to users questions and current situations
-          </p>
-
-          <a routerLink="/loginPage">
-            <button class="btn">Get Started</button></a
-          >
-        </div>
+  <section class="services" id="services">
+    <h3 class="bold">Services</h3>
+    <div class="card-container">
+      <div class="card">
+        <img src="../assets/images/budget.png" alt="" />
+        <h3 class="bold">Budgeting tool</h3>
+        <p>
+          A budgeting tool that will allow students to track their income and
+          expenses, and create a budget that reflects their financial goals
+        </p>
+        <a routerLink="/loginPage">
+          <button class="btn">Get Started</button></a>
       </div>
-    </section>
+      <div class="card">
+        <img src="../assets/images/resource.png" alt="" />
+        <h3 class="bold">Financial education resources</h3>
+        <p>
+          Access to financial education resources to help students improve
+          their financial literacy
+        </p>
+        <a routerLink="/loginPage">
+          <button class="btn">Get Started</button></a>
+      </div>
+      <div class="card">
+        <img src="../assets/images/ui.png" alt="" />
+        <h3>User-friendly interface</h3>
+        <p>
+          A user-friendly interface that will be easy for students to navigate
+          and use
+        </p>
 
-    <section class="footer" id="contact">
-<!--       <div class="icons">
-        <div>
+        <a routerLink="/loginPage">
+          <button class="btn">Get Started</button></a>
+      </div>
+      <div class="card">
+        <img src="../assets/images/ai.png" alt="" />
+        <h3>Personal Financial Assistant AI</h3>
+        <p>
+          A personal AI assistant, using an API, to provide direct responses
+          to users questions and current situations
+        </p>
+
+        <a routerLink="/loginPage">
+          <button class="btn">Get Started</button></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer" id="contact">
+    <div class="icons">
+      <!-- <div> 
           <a href="https://www.facebook.com/" target="_blank"
             ><i class="fa fa-facebook-official w3-hover-opacity"></i
           ></a>
@@ -153,25 +128,26 @@
             ><i class="fa fa-linkedin w3-hover-opacity"></i
           ></a>
         </div> -->
-        <p>2023</p>
-      </div>
-    </section>
+      <p>2023</p>
+    </div>
+  </section>
 
-    <script>
-      function navbar() {
-        let navbarEl = document.querySelector(".navbar");
-        navbarEl.style.background = "rgb(26,38,54)";
-      }
+  <script>
+    function navbar() {
+      let navbarEl = document.querySelector(".navbar");
+      navbarEl.style.background = "rgb(26,38,54)";
+    }
 
-      function closeMenu() {
-        let menu = document.querySelector(".navbar .menu");
-        menu.style.right = "-20rem";
-      }
+    function closeMenu() {
+      let menu = document.querySelector(".navbar .menu");
+      menu.style.right = "-20rem";
+    }
 
-      function openMenu() {
-        let menu = document.querySelector(".navbar .menu");
-        menu.style.right = "0";
-      }
-    </script>
-  </body>
+    function openMenu() {
+      let menu = document.querySelector(".navbar .menu");
+      menu.style.right = "0";
+    }
+  </script>
+</body>
+
 </html>
