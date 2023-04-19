@@ -9,10 +9,11 @@ const { User } = require('./Models/user');
 
 
 app.use(cors({
-  origin: '*',
+  allowedHeaders: ["authorization", "Content-Type"], // you can change the headers
+  exposedHeaders: ["authorization"], // you can change the headers
+  origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: true,
-  optionsSuccessStatus: 204
+  preflightContinue: false
 }));
 
 
