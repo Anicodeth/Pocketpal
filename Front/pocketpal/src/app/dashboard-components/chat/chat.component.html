@@ -1,0 +1,19 @@
+<div class="ai-container">
+    <h1>AI Assistant</h1>
+    <ng-container *ngFor="let message of messages">
+        <div class="message" [ngClass]="{
+        from: message.author === 'bot',
+        to: message.author === 'user'
+      }">
+            {{ message.content }}
+        </div>
+    </ng-container>
+    <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Ask me your question</label>
+    <div class="input">
+        <input class="input-box" [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" />
+        <button (click)="sendMessage()">Send</button>
+    </div>
+    <ng-template #dialogInfo>
+        <span [className]="'float-right'">Total messages: {{ messages.length }}</span>
+    </ng-template>
+</div>

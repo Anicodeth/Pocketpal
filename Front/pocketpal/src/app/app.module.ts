@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { AIpageComponent } from './aipage/aipage.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatService } from './services/chat.service';
+import { ChatComponent } from './dashboard-components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { RouterModule, Routes } from '@angular/router';
     AIpageComponent,
     LandingPageComponent,
     ProfileComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +70,13 @@ import { RouterModule, Routes } from '@angular/router';
     LayoutModule,
     ReactiveFormsModule,
     NgxChartsModule,
+    FormsModule
   
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    ChatService
+  ],
   bootstrap: [AppComponent]
 
 })
