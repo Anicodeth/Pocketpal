@@ -8,7 +8,9 @@ const { User } = require('./Models/user');
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 
 //Open Ai Api Configuration

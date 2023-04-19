@@ -26,6 +26,7 @@ import { DataService } from './services/data.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
+import { ProfileComponent } from './dashboard-components/profile/profile.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
@@ -43,6 +44,7 @@ import { RouterModule, Routes } from '@angular/router';
     SignupPageComponent,
     AIpageComponent,
     LandingPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

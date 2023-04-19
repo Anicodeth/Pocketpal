@@ -1,28 +1,39 @@
-<mat-drawer-container class="mat-drawer-container-fixed">
-    <mat-drawer #sidenav mode="side" opened="true" style="width: 200px;">
-        <mat-card>
-            <mat-card-content>Simple card</mat-card-content>
-        </mat-card>
-        <mat-nav-list>
-            <a mat-list-item (click)="showDashboard()">Dashboard</a>
-            <a mat-list-item (click)="showReports()">Reports</a>
-            <a mat-list-item (click)="showSettings()">Settings</a>
-        </mat-nav-list>
-    </mat-drawer>
-
-    <mat-drawer-content>
-        <div *ngIf="showDashboardFlag">
-            <mat-toolbar color="primary">
-                <span>My Dashboard</span>
-            </mat-toolbar>
-            <app-table [dataSource]="dataSource"
-                [displayedColumns]="displayedColumns"></app-table>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" mode="side">
+        <div class="header-logo">
+            PocketPal
         </div>
-        <div *ngIf="showReportsFlag">
+        <mat-nav-list>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showDashboard()"><i class="fa-solid fa-chart-line fa-xl"></i>Dashboard</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showReports()"><i class="fa-solid fa-flag fa-xl"></i>Reports</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showLinks()"><i class="fa-solid fa-bookmark fa-xl"></i> Useful Financial Literacy Links</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showAi()"><i class="fa-solid fa-robot fa-xl"></i> Personal Financial AI Assistant</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="showProfile()"><i class="fa-solid fa-user fa-xl"></i> Profile Settings</a>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>{{ components[currentlyOnDisplay] }}</span>
+        </mat-toolbar>
+        
+        <div *ngIf="currentlyOnDisplay == 0">
+            <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
+        </div>
+        <div *ngIf="currentlyOnDisplay == 1">
             <app-piechart></app-piechart>
         </div>
-        <div *ngIf="showSettingsFlag">
-            <!-- Content for Settings -->
+        <div *ngIf="currentlyOnDisplay == 4">
+            <app-profile></app-profile>
         </div>
-    </mat-drawer-content>
-</mat-drawer-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

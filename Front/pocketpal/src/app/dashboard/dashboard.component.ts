@@ -15,9 +15,8 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  showDashboardFlag = true;
-  showReportsFlag = false;
-  showSettingsFlag = false;
+  components = [ "My Dashboard", "Reports", "Financial Data", "Financial Assistant AI", "Profile and Settings" ]
+  currentlyOnDisplay = 0;
 
   constructor(
     private dataService: DataService
@@ -31,21 +30,23 @@ export class DashboardComponent implements OnInit {
   }
   
   showDashboard() {
-    this.showDashboardFlag = true;
-    this.showReportsFlag = false;
-    this.showSettingsFlag = false;
+    this.currentlyOnDisplay = 0;
   }
 
   showReports() {
-    this.showDashboardFlag = false;
-    this.showReportsFlag = true;
-    this.showSettingsFlag = false;
+    this.currentlyOnDisplay = 1;
   }
 
-  showSettings() {
-    this.showDashboardFlag = false;
-    this.showReportsFlag = false;
-    this.showSettingsFlag = true;
+  showAi() {
+    this.currentlyOnDisplay = 3;
+  }
+
+  showLinks() {
+    this.currentlyOnDisplay = 2;
+  }
+
+  showProfile() {
+    this.currentlyOnDisplay = 4;
   }
   
 
