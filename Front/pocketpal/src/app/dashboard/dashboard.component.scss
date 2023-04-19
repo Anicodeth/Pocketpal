@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     margin: 32px;
+    background-color: rgb(10, 19, 25);
+
 }
 
 mat-toolbar {
@@ -14,7 +16,10 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
-    height: calc(100vh - 64px);
+    // height: calc(100vh - 64px);
+    background-color: #B3B8BB;
+    height: 100%;
+
 }
 
 mat-sidenav-content {
@@ -30,14 +35,18 @@ mat-form-field {
 }
 
 .sidenav {
-  width: 25%;
+  width: 20%;
+  background-color: rgb(20,36,46);
+  color: white;
+  box-shadow: 0 4px 8px black;
+
 }
 
-@media screen and ( max-width:730px ) {
-  .sidenav {
-    width: 60%;
-  }
-}
+// @media screen and ( max-width:730px ) {
+//   .sidenav {
+//     width: 60%;
+//   }
+// }
 
 .header-logo {
   text-align: center;
@@ -52,4 +61,20 @@ mat-form-field {
 
 .right {
   margin-right: 2rem;
+}
+.sidenav mat-divider{
+  margin: 1rem;  
+  background-color: white;
+}
+
+.sidenav .tabs-list a span{
+  color: white;
+  font-size: 1.3rem;
+}
+
+.main-bar{
+  background-color: rgb(20,36,46);
+  padding: 3rem;
+  color: white;
+  box-shadow: 4px 0 8px rgb(0, 0, 0);
 }

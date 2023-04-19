@@ -15,19 +15,19 @@
         <h2>Choose Your Action</h2>
         <div class="action-buttons-row">
             <button (click)="onAddBudget()" class="action-button" mat-stroked-button extended>
-              <mat-icon>beach_access</mat-icon>
-              <span>Add Budget</span>
+                <mat-icon>beach_access</mat-icon>
+                Add Budget
             </button>
             <button (click)="onAddIncome()" class="action-button" mat-stroked-button extended>
-              <mat-icon>favorite</mat-icon>
-              <span>Add Income</span>
+                <mat-icon>favorite</mat-icon>
+                Add Income
             </button>
             <button (click)="onAddExpense()" class="action-button" mat-stroked-button extended>
-              <mat-icon>attach_money</mat-icon>
-              <span>Add Expense</span>
+                <mat-icon>attach_money</mat-icon>
+                Add Expense
             </button>
-          </div>
-          
+        </div>
+
     </div>
 </div>
 <div *ngIf="currentDisplay != 'main'">
@@ -38,11 +38,11 @@
     <div *ngIf="currentDisplay == 'addBudget'">
         Add Budget
     </div>
-    
+
     <div *ngIf="currentDisplay == 'addIncome'">
         Add Income
     </div>
-    
+
     <div *ngIf="currentDisplay == 'addExpense'">
         Add Expense
     </div>

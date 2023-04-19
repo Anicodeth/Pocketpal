@@ -303,15 +303,6 @@ a {
     -0.5rem 0 1rem rgba(0, 0, 0, 0.1);
   padding: 0.6rem;
 }
-.logicon{
-  font-size:larger;
-  transition: 0.5s linear;
-}
-
-.logicon:hover{
-color:rgba(112, 173, 90, 0.74);
-}
-
 
 #close-menu:hover,
 #open-menu:hover {
