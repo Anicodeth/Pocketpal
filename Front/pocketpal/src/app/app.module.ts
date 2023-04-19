@@ -26,6 +26,7 @@ import { DataService } from './services/data.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
+import { ProfileComponent } from './dashboard-components/profile/profile.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { PiechartComponent } from './partials/piechart/piechart.component';
     DashboardComponent,
     TableComponent,
     PiechartComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
