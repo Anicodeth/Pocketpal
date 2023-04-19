@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './services/data.service';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
 import { ProfileComponent } from './dashboard-components/profile/profile.component';
@@ -77,7 +79,12 @@ import { ChatComponent } from './dashboard-components/chat/chat.component';
     DataService,
     ChatService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    HttpClientModule,
+    ReactiveFormsModule,
+  
+  ],
 
 })
 export class AppModule {}
