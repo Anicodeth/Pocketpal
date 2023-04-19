@@ -10,19 +10,43 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   displayedColumns: string[] = ['id', 'name', 'date'];
   dataSource: MatTableDataSource<any> | any;
-
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor(private dataService: DataService) { }
+  showDashboardFlag = true;
+  showReportsFlag = false;
+  showSettingsFlag = false;
+
+  constructor(
+    private dataService: DataService
+    ) {
+  }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.dataService.getData());
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  
+  showDashboard() {
+    this.showDashboardFlag = true;
+    this.showReportsFlag = false;
+    this.showSettingsFlag = false;
+  }
+
+  showReports() {
+    this.showDashboardFlag = false;
+    this.showReportsFlag = true;
+    this.showSettingsFlag = false;
+  }
+
+  showSettings() {
+    this.showDashboardFlag = false;
+    this.showReportsFlag = false;
+    this.showSettingsFlag = true;
+  }
+  
 
 }

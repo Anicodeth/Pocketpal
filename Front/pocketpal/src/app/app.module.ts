@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,12 +23,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './services/data.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TableComponent } from './partials/table/table.component';
+import { PiechartComponent } from './partials/piechart/piechart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    TableComponent,
+    PiechartComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,8 @@ import { DataService } from './services/data.service';
     MatGridListModule,
     MatMenuModule,
     LayoutModule,
+    ReactiveFormsModule,
+    NgxChartsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
