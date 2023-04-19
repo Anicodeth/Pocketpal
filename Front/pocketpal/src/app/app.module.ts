@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgChartsModule } from 'ng2-charts';
 
@@ -27,10 +28,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
 
+=======
+import { LoginPageComponent } from './login-page/login-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { AIpageComponent } from './aipage/aipage.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RouterModule, Routes } from '@angular/router';
+>>>>>>> a89d839e1283cb45bf835870a1b83b60ec0de656
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     DashboardComponent,
     TableComponent,
     PiechartComponent,
@@ -58,5 +67,15 @@ import { PiechartComponent } from './partials/piechart/piechart.component';
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
+=======
+    LoginPageComponent,
+    SignupPageComponent,
+    AIpageComponent,
+    LandingPageComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [],
+  bootstrap: [AppComponent],
+>>>>>>> a89d839e1283cb45bf835870a1b83b60ec0de656
 })
-export class AppModule { }
+export class AppModule {}
