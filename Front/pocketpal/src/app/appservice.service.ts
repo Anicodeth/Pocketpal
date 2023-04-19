@@ -7,8 +7,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AppserviceService {
   constructor(private http: HttpClient) {}
 
-  signUp(name: string, password: string, email: string) {
+  signUp(name: string, email: string, password: string) {
     let body = { name: name, password: password, email: email };
+    console.log(body);
     return this.http.post('http://Pocket-pal-api.vercel.app/signup', body);
   }
 

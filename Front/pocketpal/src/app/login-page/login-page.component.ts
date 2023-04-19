@@ -10,6 +10,7 @@ import { AppserviceService } from '../appservice.service';
 export class LoginPageComponent {
   public loginForm: FormGroup;
   public signupForm: FormGroup;
+  isClassActive: boolean = false;
   constructor(private service: AppserviceService, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -18,8 +19,23 @@ export class LoginPageComponent {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.email],
+      password: ['', Validators.required],
     });
   }
+  cheaker() {
+    this.isClassActive = !this.isClassActive;
+  }
+
+  // login(email: string, password: string) {
+  //   this.service.signIn(email, password).subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
+  // // signup(name: string, email: string, password: string) {
+  // //   this.service.signUp(name, email, password).subscribe((data) => {
+  // //     console.log(data);
+  // //   });
+  // }
 
   //function to handle the login functionality
   login() {
@@ -32,7 +48,11 @@ export class LoginPageComponent {
   //function to handle the signup functionality
   signup() {
     this.service
-      .signIn(this.loginForm.value.username, this.loginForm.value.password)
+      .signUp(
+        this.signupForm.value.name,
+        this.signupForm.value.email,
+        this.signupForm.value.password
+      )
       .subscribe((response) => {
         console.log(response);
       });
