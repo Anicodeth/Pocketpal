@@ -9,23 +9,35 @@ import { ChatService, Message } from 'src/app/services/chat.service';
 export class ChatComponent implements OnInit {
 
   messages: Message[] = [];
-  value: string = '';
+  newMessage: string = '';
 
   constructor(
     public chatService: ChatService,
     public aiService: AiService
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
 
+  showTypingIndicator = false;
+
   sendMessage() {
-    this.aiService.sendBotRequest(this.value);
+    if (!this.newMessage.trim()) {
+      return;
+    }
+    
+    const message = new Message(this.newMessage, this.newMessage);
+    this.aiService.sendBotRequest(this.newMessage);
+    this.messages.push(message);
+    this.showTypingIndicator = true;
 
-    this.messages.push(new Message("user", this.value));
-    this.messages.push(new Message("bot", this.aiService.getBotResponse()));
+    setTimeout(() => {
+      const botMessage = new Message("bot", this.aiService.getBotResponse());
+      this.messages.push(botMessage);
+      this.showTypingIndicator = false;
+    }, 500);
 
-    this.value = "";
+    this.newMessage = '';
+
   }
-
 }
