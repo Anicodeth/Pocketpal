@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-piechart',
-  templateUrl: './piechart.component.html',
-  styleUrls: ['./piechart.component.css']
+  selector: 'app-bar-chart',
+  templateUrl: './bar-chart.component.html',
+  styleUrls: ['./bar-chart.component.css']
 })
-export class PiechartComponent {
+export class BarChartComponent {
   chartData = [
     {
       name: 'Germany',
@@ -32,4 +32,11 @@ export class PiechartComponent {
       value: 35800,
     },
   ];
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
+  xAxisLabel = "Products";
+  yAxisLabel = "Sales";
+
 }

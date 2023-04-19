@@ -1,0 +1,7 @@
+.ngx-charts-legend-wrapper {
+    position: relative;
+    top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
