@@ -27,7 +27,7 @@ export class AppserviceService {
   expenses(token: string, month: any, year: any, name:string, amount: number, category: string){
     const header = new HttpHeaders({'Authorization': `Bearer ${token}`});
     let body = {name: name, amount: amount, category: category}
-    return this.http.post(`http://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`, {headers: header})
+    return this.http.post(`http://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`, body, {headers: header})
   }
   
   getBudget(token: string, month: number, year: number, balance: string){
