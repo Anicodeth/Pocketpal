@@ -9,7 +9,10 @@ const { User } = require('./Models/user');
 
 
 app.use(cors({
-  origin: '*'
+  origin: '*',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: true,
+  optionsSuccessStatus: 204
 }));
 
 
