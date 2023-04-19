@@ -11,7 +11,7 @@ export class ProfileComponent {
   constructor(private serveice: AppserviceService){}
 
   editProfile(Fname: string, Lname: string, email: string, password: string){
-    this.serveice.editProfile(this.serveice.userData.tooken, Fname, Lname, email, password)
+    this.serveice.editProfile( Fname, Lname, email, password)
   }
 
 }

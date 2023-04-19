@@ -51,14 +51,14 @@
       </div>
     </header>
 
-    <div class="container" id="container">
+    <div class="container" [ngClass]= "{'right-panel-active': isClassActive}" id="container">
       <div class="form-container sign-up-container">
-        <form action="">
+        <form [formGroup]="signupForm" (submit)="signup()">
           <h1>Create Account</h1>
           <br />
-          <input type="text" name="name" placeholder="Name" />
-          <input type="email" name="email" placeholder="Email" />
-          <input type="password" name="password" placeholder="Password" />
+          <input formControlName="name" type="text" name="name" placeholder="Name" />
+          <input formControlName="email" type="email" name="email" placeholder="Email" />
+          <input formControlName="password" type="password" name="password" placeholder="Password" />
           <button>SignUp</button>
         </form>
       </div>
@@ -84,12 +84,12 @@
             <br />
             <p>Lets continue please login with your personal info</p>
             <br />
-            <button class="ghost" id="signIn">Sign In</button>
+            <button class="ghost" id="signIn" (click)="cheaker()">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
             <h1>Hello, Let's Roll!</h1>
             <p>Enter your details and lets get going</p>
-            <button class="ghost" id="signUp">Sign Up</button>
+            <button class="ghost" id="signUp" (click)="cheaker()">Sign Up</button>
           </div>
         </div>
       </div>

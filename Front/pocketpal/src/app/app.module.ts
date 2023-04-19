@@ -30,7 +30,6 @@ import { DataService } from './services/data.service';
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
 import { ProfileComponent } from './dashboard-components/profile/profile.component';
-
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { AIpageComponent } from './aipage/aipage.component';
@@ -72,7 +71,8 @@ import { ChatComponent } from './dashboard-components/chat/chat.component';
     LayoutModule,
     ReactiveFormsModule,
     NgxChartsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   
   ],
   providers: [
@@ -81,7 +81,6 @@ import { ChatComponent } from './dashboard-components/chat/chat.component';
   ],
   bootstrap: [
     AppComponent,
-    HttpClientModule,
     ReactiveFormsModule,
   
   ],
