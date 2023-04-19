@@ -7,10 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AppserviceService {
   constructor(private http: HttpClient) {}
 
+  userData: any;
+
   signUp(name: string, password: string, email: string) {
 
     let body = { name: name, password: password, email: email };
-    return this.http.post('http://Pocket-pal-api.vercel.app/signup', body);
+    return this.http.post('https://Pocket-pal-api.vercel.app/signup', body);
   }
 
   signIn(email: string, password: string) {
@@ -21,7 +23,16 @@ export class AppserviceService {
 
   getProfile(token: string) {
     const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.get('http://Pocket-pal-api.vercel.app/profile', {
+    return this.http.get('https://Pocket-pal-api.vercel.app/profile', {
+      headers: header,
+    });
+  }
+
+
+  editProfile(token: string, firstname: string, lastname: string, email: string, password: string) {
+    const body = { firstname: firstname, lastname: lastname, email: email, password: password};
+    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.put('https://Pocket-pal-api.vercel.app/profile', body, {
       headers: header,
     });
   }
@@ -37,7 +48,7 @@ export class AppserviceService {
     const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
     let body = { name: name, amount: amount, category: category };
     return this.http.post(
-      `http://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
+      `https://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
       { headers: header }
     );
   }
@@ -45,7 +56,7 @@ export class AppserviceService {
   getBudget(token: string, month: number, year: number, balance: string) {
     const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
     let body = { month: month, year: year, balance: balance };
-    return this.http.post('http://Pocket-pal-api.vercel.app/budgets', body, {
+    return this.http.post('https://Pocket-pal-api.vercel.app/budgets', body, {
       headers: header,
     });
   }
@@ -53,7 +64,7 @@ export class AppserviceService {
   deleteExpense(token: string, budget_index: any, expense_index: any) {
     const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.http.delete(
-      `http://Pocket-pal-api.vercel.app/budget/${budget_index}/expenses/${expense_index}`,
+      `https://Pocket-pal-api.vercel.app/budget/${budget_index}/expenses/${expense_index}`,
       { headers: header }
     );
   }
@@ -61,12 +72,12 @@ export class AppserviceService {
   deletBudget(token: string, budget_index: any) {
     const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
     return this.http.delete(
-      `http://Pocket-pal-api.vercel.app/budget/${budget_index}`,
+      `https://Pocket-pal-api.vercel.app/budget/${budget_index}`,
       { headers: header }
     );
   }
 
   getAIprompt(prompt: string) {
-    return this.http.get(`http://Pocket-pal-api.vercel.app/${prompt}`);
+    return this.http.get(`https://Pocket-pal-api.vercel.app/${prompt}`);
   }
 }
