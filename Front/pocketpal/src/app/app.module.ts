@@ -2,6 +2,8 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataService } from './services/data.service';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { TableComponent } from './partials/table/table.component';
 import { PiechartComponent } from './partials/piechart/piechart.component';
 import { ProfileComponent } from './dashboard-components/profile/profile.component';
@@ -33,6 +35,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { AIpageComponent } from './aipage/aipage.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AppserviceService } from './appservice.service';
 
 @NgModule({
   declarations: [
@@ -66,10 +69,13 @@ import { RouterModule, Routes } from '@angular/router';
     LayoutModule,
     ReactiveFormsModule,
     NgxChartsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   
   ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
+  providers: [AppserviceService, DataService],
 
 })
 export class AppModule {}
