@@ -3,34 +3,48 @@
         <div class="header-logo">
             PocketPal
         </div>
-        <mat-nav-list>
+        <mat-nav-list class="tabs-list">
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showDashboard()"><i class="fa-solid fa-chart-line fa-xl"></i>Dashboard</a>
+            <a mat-list-item (click)="showDashboard()"><i
+                    class="fa-solid fa-chart-line fa-xl"></i><span>Dashboard</span></a>
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showReports()"><i class="fa-solid fa-flag fa-xl"></i>Reports</a>
+            <a mat-list-item (click)="showReports()"><i class="fa-solid fa-flag fa-xl"></i><span>Budgets, Incomes and
+                    Expenses</span></a>
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showLinks()"><i class="fa-solid fa-bookmark fa-xl"></i> Useful Financial Literacy Links</a>
+            <a mat-list-item (click)="showLinks()"><i class="fa-solid fa-bookmark fa-xl"></i> <span>Useful Financial
+                    Literacy
+                    Links</span></a>
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showAi()"><i class="fa-solid fa-robot fa-xl"></i> Personal Financial AI Assistant</a>
+            <a mat-list-item (click)="showAi()"><i class="fa-solid fa-robot fa-xl"></i> <span>Personal Financial AI
+                    Assistant</span></a>
             <mat-divider></mat-divider>
-            <a mat-list-item (click)="showProfile()"><i class="fa-solid fa-user fa-xl"></i> Profile Settings</a>
+            <a mat-list-item (click)="showProfile()"><i class="fa-solid fa-user fa-xl"></i> <span>Profile
+                    Settings</span></a>
             <mat-divider></mat-divider>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>{{ components[currentlyOnDisplay] }}</span>
+        <mat-toolbar class="main-bar">
+            <div class="left">
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>{{ components[currentlyOnDisplay] }}</span>
+            </div>
+            <div class="right">
+                <button mat-raised-button>
+                    <mat-icon>person</mat-icon>
+                    Logout
+                </button>
+            </div>
         </mat-toolbar>
-        
+
         <div *ngIf="currentlyOnDisplay == 0">
-            <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
+            <app-main-dashboard></app-main-dashboard>
         </div>
         <div *ngIf="currentlyOnDisplay == 1">
-            <app-piechart></app-piechart>
+            <app-budget></app-budget>
         </div>
         <div *ngIf="currentlyOnDisplay == 4">
             <app-profile></app-profile>

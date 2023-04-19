@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>SignUp and Login</title>
@@ -51,14 +51,14 @@
       </div>
     </header>
 
-    <div class="container" id="container">
+    <div class="container" [ngClass]= "{'right-panel-active': isClassActive}" id="container">
       <div class="form-container sign-up-container">
-        <form action="">
+        <form [formGroup]="signupForm" (submit)="signup()">
           <h1>Create Account</h1>
           <br />
-          <input type="text" name="name" placeholder="Name" />
-          <input type="email" name="email" placeholder="Email" />
-          <input type="password" name="password" placeholder="Password" />
+          <input formControlName="name" type="text" name="name" placeholder="Name" />
+          <input formControlName="email" type="email" name="email" placeholder="Email" />
+          <input formControlName="password" type="password" name="password" placeholder="Password" />
           <button>SignUp</button>
         </form>
       </div>
@@ -66,7 +66,7 @@
         <form [formGroup]="loginForm" (submit)="login()">
           <h1>Sign In</h1>
           <br />
-          <input formControlName="email" placeholder="email" required />
+          <input formControlName="email" placeholder="email" required type="email" />
           <input
             formControlName="password"
             type="password"
@@ -84,12 +84,212 @@
             <br />
             <p>Lets continue please login with your personal info</p>
             <br />
-            <button class="ghost" id="signIn">Sign In</button>
+            <button class="ghost" id="signIn" (click)="cheaker()">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
             <h1>Hello, Let's Roll!</h1>
             <p>Enter your details and lets get going</p>
-            <button class="ghost" id="signUp">Sign Up</button>
+            <button class="ghost" id="signUp" (click)="cheaker()">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SignUp and Login</title>
+    <script
+      src="https://kit.fontawesome.com/320001bef3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="header" style="position: fixed">
+      <div class="navbar">
+        <i class="fa-solid fa-bars" id="open-menu" onclick="openMenu()"></i>
+        <div class="menu">
+          <i
+            class="fa-solid fa-xmark"
+            id="close-menu"
+            onclick="closeMenu()"
+          ></i>
+          <div class="nav-content">
+            <a href="./index.html" onclick="closeMenu()">Home</a>
+            <a href="./login_signup.html" onclick="closeMenu()"
+              >Sign-in / Log-in</a
+            >
+          </div>
+          <div class="menu-icons">
+            <a href="https://www.facebook.com/" target="_blank"
+              ><i class="fa fa-facebook-official w3-hover-opacity"></i
+            ></a>
+            <a href="https://www.instagram.com/" target="_blank"
+              ><i class="fa fa-instagram w3-hover-opacity"></i
+            ></a>
+            <a href="https://www.snapchat.com/" target="_blank"
+              ><i class="fa fa-snapchat w3-hover-opacity"></i
+            ></a>
+            <a href="https://www.pinsterest.com/" target="_blank"
+              ><i class="fa fa-pinterest-p w3-hover-opacity"></i
+            ></a>
+            <a href="https://www.twitter.com/" target="_blank"
+              ><i class="fa fa-twitter w3-hover-opacity"></i
+            ></a>
+            <a href="https://www.linkedin.com/" target="_blank"
+              ><i class="fa fa-linkedin w3-hover-opacity"></i
+            ></a>
+          </div>
+        </div>
+        <a href="#index">
+          <h3 class="portfolio">PocketPal</h3>
+        </a>
+        <div class="links">
+          <a href="./index.html">Home</a>
+          <a href="./login_signup.html">Sign-in / Log-in</a>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="mobile-sign-in" *ngIf ="mobileToggle">
+      <form
+        [formGroup]="loginForm"
+        onsubmit="event.preventDefault()"
+        (submit)="login()"
+      >
+        <h1>Sign In</h1>
+        <br />
+        <input
+          formControlName="email"
+          placeholder="email"
+          required
+          type="email"
+        />
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+        />
+        <a href="#">Forgot Your Password</a>
+
+        <button type="submit">Sign In</button>
+        <h5 class = "sign-up" (click) = "toggle()" >Sign Up</h5>
+        
+      </form>
+ 
+    </div>
+
+
+    <div class="mobile-sign-up " *ngIf = "!mobileToggle">
+      <form
+        [formGroup]="signupForm"
+        (submit)="signup()"
+        onsubmit="event.preventDefault()"
+      >
+        <h1>Create Account</h1>
+        <br />
+        <input formControlName="name" placeholder="Name" />
+        <input formControlName="email" placeholder="Email" />
+        <input formControlName="password" placeholder="Password" />
+        <button type="submit">SignUp</button>
+        <h5 class = "sign-up" (click) = "toggle()" >Sign In</h5>
+      </form>
+    </div>
+
+
+
+
+    <div
+      class="container"
+      [ngClass]="{ 'right-panel-active': isClassActive }"
+      id="container"
+    >
+    <div class="form-container sign-up-container">
+      <form
+        [formGroup]="signupForm"
+        (submit)="signup()"
+        onsubmit="event.preventDefault()"
+      >
+        <h1>Create Account</h1>
+        <br />
+        <input formControlName="name" placeholder="Name" />
+        <input formControlName="email" placeholder="Email" />
+        <input formControlName="password" placeholder="Password" />
+        <button type="submit">SignUp</button>
+       
+      </form>
+    </div>
+
+
+    <div class="form-container sign-in-container">
+      <form
+        [formGroup]="loginForm"
+        onsubmit="event.preventDefault()"
+        (submit)="login()"
+      >
+        <h1>Sign In</h1>
+        <br />
+        <input
+          formControlName="email"
+          placeholder="email"
+          required
+          type="email"
+        />
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+        />
+        <a href="#">Forgot Your Password</a>
+
+        <button type="submit" [disabled]="isButtonDisabled">Sign In</button>
+      </form>
+    </div>
+
+
+    <div class="form-container sign-up-container">
+      <form
+        [formGroup]="signupForm"
+        (submit)="signup()"
+        onsubmit="event.preventDefault()"
+      >
+        <h1>Create Account</h1>
+        <br />
+        <input formControlName="name" placeholder="Name" />
+        <input formControlName="email" placeholder="Email" />
+        <input formControlName="password" placeholder="Password" />
+        <button type="submit" [disabled]="isButtonDisabled">SignUp</button>
+      </form>
+    </div>
+
+
+   
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <br />
+            <p>Lets continue please login with your personal info</p>
+            <br />
+            <button class="ghost" id="signIn" (click)="cheaker()">
+              Sign In
+            </button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Let's Roll!</h1>
+            <p>Enter your details and lets get going</p>
+            <button class="ghost" id="signUp" (click)="cheaker()">
+              Sign Up
+            </button>
           </div>
         </div>
       </div>

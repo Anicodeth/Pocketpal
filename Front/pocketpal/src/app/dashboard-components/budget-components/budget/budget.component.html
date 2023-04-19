@@ -1,0 +1,49 @@
+<div *ngIf="currentDisplay == 'main'">
+    <mat-card>
+        <mat-card-content>
+            <div class="main-report">
+                <div class="title">
+                    <h2>Current Ongoing Budgets</h2>
+                </div>
+                <div class="charts-row">
+                    <app-pie-chart [chartData]="budgetData"></app-pie-chart>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="main">
+        <h2>Choose Your Action</h2>
+        <div class="action-buttons-row">
+            <button (click)="onAddBudget()" class="action-button" mat-stroked-button extended>
+                <mat-icon>beach_access</mat-icon>
+                Add Budget
+            </button>
+            <button (click)="onAddIncome()" class="action-button" mat-stroked-button extended>
+                <mat-icon>favorite</mat-icon>
+                Add Income
+            </button>
+            <button (click)="onAddExpense()" class="action-button" mat-stroked-button extended>
+                <mat-icon>attach_money</mat-icon>
+                Add Expense
+            </button>
+        </div>
+
+    </div>
+</div>
+<div *ngIf="currentDisplay != 'main'">
+    <button (click)="onSeeBudget()" class="back-button" mat-stroked-button extended>
+        <mat-icon>arrow_back</mat-icon>
+        Back
+    </button>
+    <div *ngIf="currentDisplay == 'addBudget'">
+        Add Budget
+    </div>
+
+    <div *ngIf="currentDisplay == 'addIncome'">
+        Add Income
+    </div>
+
+    <div *ngIf="currentDisplay == 'addExpense'">
+        Add Expense
+    </div>
+</div>

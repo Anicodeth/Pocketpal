@@ -1,19 +1,21 @@
-<div class="ai-container">
-    <h1>AI Assistant</h1>
-    <ng-container *ngFor="let message of messages">
-        <div class="message" [ngClass]="{
-        from: message.author === 'bot',
-        to: message.author === 'user'
-      }">
-            {{ message.content }}
-        </div>
-    </ng-container>
-    <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Ask me your question</label>
-    <div class="input">
-        <input class="input-box" [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" />
-        <button (click)="sendMessage()">Send</button>
+<div class="chat-container">
+  <div class="chat-body">
+    <div *ngFor="let message of messages" class="message-container"
+      [ngClass]="{ 'left': message.author === 'bot', 'right': message.author === 'user' }">
+      <div class="message" [ngClass]="{ 'bot': message.author === 'bot', 'user': message.author === 'user' }">
+        {{ message.content }}
+      </div>
     </div>
-    <ng-template #dialogInfo>
-        <span [className]="'float-right'">Total messages: {{ messages.length }}</span>
-    </ng-template>
+    <div class="typing-indicator" *ngIf="showTypingIndicator">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="chat-footer">
+    <div class="input-wrapper input">
+      <input class="input-box" type="text" placeholder="" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
 </div>
