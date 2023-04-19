@@ -72,19 +72,9 @@ import { ChatComponent } from './dashboard-components/chat/chat.component';
     LayoutModule,
     ReactiveFormsModule,
     NgxChartsModule,
-    FormsModule
-  
+    FormsModule,
   ],
-  providers: [
-    DataService,
-    ChatService
-  ],
-  bootstrap: [
-    AppComponent,
-    HttpClientModule,
-    ReactiveFormsModule,
-  
-  ],
-
+  providers: [DataService, ChatService],
+  bootstrap: [AppComponent, HttpClientModule, ReactiveFormsModule],
 })
 export class AppModule {}
