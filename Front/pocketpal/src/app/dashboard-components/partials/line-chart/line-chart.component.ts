@@ -84,5 +84,5 @@ export class LineChartComponent {
 
   animations = true;
 
-  view: [number, number] = [700, 400];
+  // view: [number, number] = [700, 400];
 }

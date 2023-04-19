@@ -20,14 +20,22 @@
 
     <mat-sidenav-content>
         <mat-toolbar color="primary">
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>{{ components[currentlyOnDisplay] }}</span>
+            <div class="left">
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>{{ components[currentlyOnDisplay] }}</span>
+            </div>
+            <div class="right">
+                <button mat-raised-button>
+                    <mat-icon>person</mat-icon>
+                    Logout
+                </button>
+            </div>
         </mat-toolbar>
         
         <div *ngIf="currentlyOnDisplay == 0">
-            <app-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-table>
+            <app-main-dashboard></app-main-dashboard>
         </div>
         <div *ngIf="currentlyOnDisplay == 1">
             <app-budget></app-budget>
