@@ -26,7 +26,7 @@ export class LoginPageComponent {
     this.service
       .signIn(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((response) => {
-        console.log(response);
+        this.service.userData = response
       });
   }
   //function to handle the signup functionality
