@@ -46,6 +46,7 @@ import { AddIncomeComponent } from './dashboard-components/budget-components/add
 import { AddExpenseComponent } from './dashboard-components/budget-components/add-expense/add-expense.component';
 import { ApiService } from './services/api.service';
 import { AiService } from './services/ai.service';
+import { MainDashboardComponent } from './dashboard-components/main-dashboard/main-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AiService } from './services/ai.service';
     AddBudgetComponent,
     AddIncomeComponent,
     AddExpenseComponent,
+    MainDashboardComponent,
   ],
   imports: [
     BrowserModule,

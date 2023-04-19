@@ -1,0 +1,51 @@
+.main-card {
+    background-color: #f2f2f2ad;
+}
+
+.roundup-information {
+    width: 100%;
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.tile {
+    min-width: 22%;
+}
+
+.insight-graphs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: space-evenly;
+}
+
+.income-vs-expense-line-graph {
+    min-width: 55%;
+}
+
+.income-vs-expense-bar-graph {
+    min-width: 20%;
+}
+
+.detail-charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: space-evenly;
+}
+
+.pie-chart {
+    min-width: 30%;
+}
+
+.expenses-table {
+    min-width: 70%;
+}

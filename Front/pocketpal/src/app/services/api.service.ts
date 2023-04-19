@@ -38,7 +38,7 @@ export class ApiService implements OnInit {
         value: 80,
       },
       {
-        name: 'Used Up',
+        name: 'Used',
         value: 20,
       },
     ];
