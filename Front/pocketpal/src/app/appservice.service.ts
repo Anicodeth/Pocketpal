@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -7,66 +7,78 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AppserviceService {
   constructor(private http: HttpClient) {}
 
-  signUp(name: string, password: string, email: string) {
+  userData: any;
+  token = sessionStorage.getItem('auth_token')
 
+  signUp(name: string, email: string, password: string) {
     let body = { name: name, password: password, email: email };
-    return this.http.post('http://Pocket-pal-api.vercel.app/signup', body);
+    console.log(body);
+    return this.http.post('https://Pocket-pal-api.vercel.app/signup', body);
   }
 
   signIn(email: string, password: string) {
 
     let body = { email: email, password: password };
+    console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
   }
 
-  getProfile(token: string) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
-    return this.http.get('http://Pocket-pal-api.vercel.app/profile', {
+  getProfile() {
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    return this.http.get('https://Pocket-pal-api.vercel.app/profile', {
+      headers: header,
+    });
+  }
+
+
+  editProfile( firstname: string, lastname: string, email: string, password: string) {
+    const body = { firstname: firstname, lastname: lastname, email: email, password: password};
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    return this.http.put('https://Pocket-pal-api.vercel.app/profile', body, {
       headers: header,
     });
   }
 
   expenses(
-    token: string,
     month: any,
     year: any,
     name: string,
     amount: number,
     category: string
   ) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
     let body = { name: name, amount: amount, category: category };
     return this.http.post(
-      `http://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
+      `https://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
       { headers: header }
     );
   }
 
-  getBudget(token: string, month: number, year: number, balance: string) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  getBudget( month: number, year: number, balance: string) {
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
     let body = { month: month, year: year, balance: balance };
-    return this.http.post('http://Pocket-pal-api.vercel.app/budgets', body, {
+    return this.http.post('https://Pocket-pal-api.vercel.app/budgets', body, {
       headers: header,
     });
   }
 
-  deleteExpense(token: string, budget_index: any, expense_index: any) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  deleteExpense( budget_index: any, expense_index: any) {
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
     return this.http.delete(
-      `http://Pocket-pal-api.vercel.app/budget/${budget_index}/expenses/${expense_index}`,
+      `https://Pocket-pal-api.vercel.app/budget/${budget_index}/expenses/${expense_index}`,
       { headers: header }
     );
   }
 
-  deletBudget(token: string, budget_index: any) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  deletBudget( budget_index: any) {
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
     return this.http.delete(
-      `http://Pocket-pal-api.vercel.app/budget/${budget_index}`,
+      `https://Pocket-pal-api.vercel.app/budget/${budget_index}`,
       { headers: header }
     );
   }
 
   getAIprompt(prompt: string) {
-    return this.http.get(`http://Pocket-pal-api.vercel.app/${prompt}`);
+    return this.http.get(`https://Pocket-pal-api.vercel.app/${prompt}`);
   }
 }

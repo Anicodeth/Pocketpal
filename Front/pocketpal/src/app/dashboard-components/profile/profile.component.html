@@ -1,11 +1,11 @@
 <div class="profile-container">
     <div class="card">
-        <div class="info"> <span>Personal Information</span> <button id="savebutton">save</button> </div>
+        <div class="info"> <span>Personal Information</span> <button  id="savebutton" (click) = "editProfile(Fname.value, Lname.value, email.value, pass.value)">save</button> </div>
         <div class="forms">
-            <div class="inputs"> <span>First Name</span> <input type="text" value="Default Name"> </div>
-            <div class="inputs"> <span>Last Name</span> <input type="text" value="Default Name"> </div>
-            <div class="inputs"> <span>Email</span> <input type="text" value="Default Email"> </div>
-            <div class="inputs"> <span>New Password</span> <input type="password"> </div>
+            <div class="inputs"> <span>First Name</span> <input #Fname type="text" value="Default Name"> </div>
+            <div class="inputs"> <span>Last Name</span> <input #Lname type="text" value="Default Name"> </div>
+            <div class="inputs"> <span>Email</span> <input #email type="text" value="Default Email"> </div>
+            <div class="inputs"> <span>New Password</span> <input #pass type="password"> </div>
         </div>
     </div>
 </div>
