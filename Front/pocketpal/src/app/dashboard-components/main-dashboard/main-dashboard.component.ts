@@ -27,7 +27,6 @@ export class MainDashboardComponent implements OnInit {
     this.appService.getProfile().
     subscribe((response) => {
       this.profileData = response;
-      console.log(this.profileData);
     });
   }
 

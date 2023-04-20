@@ -12,14 +12,12 @@ export class AppserviceService {
 
   signUp(name: string, email: string, password: string) {
     let body = { name: name, password: password, email: email };
-    console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signup', body);
   }
 
   signIn(email: string, password: string) {
 
     let body = { email: email, password: password };
-    console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
   }
 
