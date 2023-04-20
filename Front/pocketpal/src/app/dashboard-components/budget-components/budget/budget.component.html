@@ -5,8 +5,11 @@
                 <div class="title">
                     <h2>Current Ongoing Budgets</h2>
                 </div>
-                <div class="charts-row">
-                    <!-- <app-pie-chart [chartData]="budgetData"></app-pie-chart> -->
+                <div *ngFor="let budget of budgets; let i = index" class="charts-row">
+                    <button (click)="onSetBudget(i)">
+                        Budget {{ i }}
+                        <app-pie-chart [chartData]="getPieChartData(i)"></app-pie-chart>
+                    </button>
                 </div>
             </div>
         </mat-card-content>
@@ -17,14 +20,6 @@
             <button (click)="onAddBudget()" class="action-button" mat-stroked-button extended>
                 <mat-icon>beach_access</mat-icon>
                 Add Budget
-            </button>
-            <button (click)="onAddIncome()" class="action-button" mat-stroked-button extended>
-                <mat-icon>favorite</mat-icon>
-                Add Income
-            </button>
-            <button (click)="onAddExpense()" class="action-button" mat-stroked-button extended>
-                <mat-icon>attach_money</mat-icon>
-                Add Expense
             </button>
         </div>
 
@@ -37,6 +32,9 @@
     </button>
     <div *ngIf="currentDisplay == 'addBudget'">
         Add Budget
+    </div>
+    <div *ngIf="currentDisplay == 'budgetDetail'">
+        <app-budget-detail [Budget]="this.budgets[currentBudget]" ></app-budget-detail>
     </div>
 
     <div *ngIf="currentDisplay == 'addIncome'">
