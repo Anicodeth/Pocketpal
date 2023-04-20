@@ -31,7 +31,7 @@
         Back
     </button>
     <div *ngIf="currentDisplay == 'addBudget'">
-        Add Budget
+        <app-add-budget> </app-add-budget>
     </div>
     <div *ngIf="currentDisplay == 'budgetDetail'">
         <app-budget-detail [Budget]="this.budgets[currentBudget]" ></app-budget-detail>
