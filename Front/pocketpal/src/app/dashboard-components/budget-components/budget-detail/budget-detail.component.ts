@@ -32,7 +32,11 @@ export class BudgetDetailComponent {
   }
 
   deleteExpense(expenseIndex: number){
-    this.appService.deleteExpense(this.budgetIndex, expenseIndex)
+    this.appService.deleteExpense(this.budgetIndex, expenseIndex).subscribe(
+      (data)=>{
+        
+      }
+      )
   }
 
 }

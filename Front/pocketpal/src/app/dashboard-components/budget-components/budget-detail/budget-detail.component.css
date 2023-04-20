@@ -10,6 +10,7 @@
   .left-side {
     flex: 1;
     margin-right: 50px;
+    width: 100%;
   }
   
   /* budget image */
@@ -21,17 +22,20 @@
   
   /* expense cards */
   .expense-cards {
+    width: 80%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
   }
   
   /* expense card */
   .expense-card {
+    margin-top: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    padding: 20px;
-    width: calc(33.33% - 20px);
+    padding: 30px;
+    width: 80%;
     display: flex;
     align-items: center;
     transition: all 0.3s ease;

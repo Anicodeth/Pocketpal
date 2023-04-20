@@ -48,7 +48,21 @@ export class AppserviceService {
       headers: header,
     });
   }
+  addBudget(
+    month: any,
+    year: any,
+    budget: any,
+  ) {
+    this.refreshToken();
 
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
+    let body = { month: month, year: year, budget: budget};
+    console.log(body);
+    return this.http.post(
+      `https://Pocket-pal-api.vercel.app/budgets`,body,
+      { headers: header }
+    );
+  }
   expenses(
     month: any,
     year: any,

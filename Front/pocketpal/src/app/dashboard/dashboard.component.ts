@@ -3,13 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../services/data.service';
+import { AppserviceService } from '../appservice.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   dataSource: MatTableDataSource<any> | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -18,14 +20,9 @@ export class DashboardComponent implements OnInit {
   currentlyOnDisplay = 0;
 
   constructor(
-    private dataService: DataService
+    private appService: AppserviceService,
+    private rounterService: Router
     ) {
-  }
-
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.dataService.getData());
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
   
   showDashboard() {
@@ -46,6 +43,12 @@ export class DashboardComponent implements OnInit {
 
   showProfile() {
     this.currentlyOnDisplay = 4;
+  }
+
+  logOut() {
+    
+    sessionStorage.setItem('jwt', "");
+    this.rounterService.navigateByUrl("/Home");
   }
   
 
