@@ -7,13 +7,11 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent {
-  public budgetData: string;
   public currentDisplay: string = 'main';
 
   constructor(
     private apiService: ApiService
   ) {
-    this.budgetData = this.apiService.getBudgetData();
   }
 
   onSeeBudget() {

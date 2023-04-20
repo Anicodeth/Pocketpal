@@ -32,17 +32,11 @@ export class ApiService implements OnInit {
   }
 
   getBudgetData() {
-    const budgetData =  [
-      {
-        name: 'Left',
-        value: 80,
-      },
-      {
-        name: 'Used',
-        value: 20,
-      },
+    return [
+      {name: 'Rent', category: 'Housing', amount: 1000},
+      {name: 'Groceries', category: 'Food', amount: 200},
+      {name: 'Gas', category: 'Transportation', amount: 50},
+      {name: 'Internet', category: 'Utilities', amount: 70},
     ];
-    return budgetData;
-    return this.budgetData;
   }
 }
