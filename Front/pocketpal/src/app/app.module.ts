@@ -49,6 +49,7 @@ import { AiService } from './services/ai.service';
 import { MainDashboardComponent } from './dashboard-components/main-dashboard/main-dashboard.component';
 import { AppserviceService } from './services/appservice.service';
 import { LiteracyLinksComponent } from './dashboard-components/literacy-links/literacy-links.component';
+import { BudgetDetailComponent } from './dashboard-components/budget-components/budget-detail/budget-detail.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { LiteracyLinksComponent } from './dashboard-components/literacy-links/li
     AddExpenseComponent,
     MainDashboardComponent,
     LiteracyLinksComponent,
+    BudgetDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,6 @@ import { LiteracyLinksComponent } from './dashboard-components/literacy-links/li
     ChatService,
     ApiService,
     AiService,
-    AppserviceService
   ],
   bootstrap: [
     AppComponent,

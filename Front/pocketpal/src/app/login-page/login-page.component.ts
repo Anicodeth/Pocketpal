@@ -1,6 +1,6 @@
 import { Component, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppserviceService } from '../services/appservice.service';
+import { AppserviceService } from '../appservice.service';
 import { Router } from "@angular/router";
 import {OnChanges} from "@angular/core"
 
@@ -50,7 +50,7 @@ export class LoginPageComponent {
         this.isButtonDisabled = false;
         this.service.userData = response;
 
-        sessionStorage.setItem('jwt', response.token);
+        sessionStorage.setItem('auth_token', response.token);
 
         this.router.navigateByUrl("/dashboard")
 

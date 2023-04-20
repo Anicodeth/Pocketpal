@@ -1,1 +1,15 @@
-<p>add-budget works!</p>
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="month">Month:</label>
+      <input type="text" id="month" formControlName="month">
+    </div>
+    <div>
+      <label for="year">Year:</label>
+      <input type="text" id="year" formControlName="year">
+    </div>
+    <div>
+      <label for="balance">Balance:</label>
+      <input type="text" id="balance" formControlName="balance">
+    </div>
+    <button type="submit" [disabled]="budgetForm.invalid">Submit</button>
+ </form>

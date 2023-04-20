@@ -12,7 +12,7 @@
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button color="primary"
-                                (click)="viewIncomeDetails()">Quick Details</button>
+                                (click)="viewIncomeDetails()">View Details</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -22,16 +22,11 @@
                             <div class="tile-content">
                                 <mat-icon>money_off</mat-icon>
                                 <h1>Total Expenses: {{totalExpenses}}</h1>
-                                <div class="expenseDetails" #expenseDetails>
-                                    <div *ngFor="let expense of expenses">
-                                        {{ expense.name }}                                  
-                                    </div>
-                                </div>
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button color="primary"
-                                (click)="expenseDetails.classList.toggle('hidden')">Quick Details</button>
+                                (click)="viewExpenseDetails()">View Details</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -40,12 +35,12 @@
                         <mat-card-content>
                             <div class="tile-content">
                                 <mat-icon>account_balance_wallet</mat-icon>
-                                <h1>Net Income: {{totalIncome - totalExpenses}}</h1>
+                                <h1>Net Income: {{netIncome}}</h1>
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button color="primary"
-                                (click)="viewBudgetDetails()">Quick Details</button>
+                                (click)="viewBudgetDetails()">View Details</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -54,12 +49,12 @@
                         <mat-card-content>
                             <div class="tile-content">
                                 <mat-icon>playlist_add_check</mat-icon>
-                                <h1>Total Budgets: {{budgets.length}}</h1>
+                                <h1>Total Budgets: {{totalBudgets}}</h1>
                             </div>
                         </mat-card-content>
                         <mat-card-actions>
                             <button mat-button color="primary"
-                                (click)="viewBudgetDetails()">Quick Details</button>
+                                (click)="viewBudgetDetails()">View Details</button>
                         </mat-card-actions>
                     </mat-card>
                 </div>
@@ -69,14 +64,14 @@
             <div class="income-vs-expense-line-graph">
                 <mat-card>
                     <mat-card-content>
-                        <app-line-chart [chartData]="lineChartData" [xAxisLabel]="'Categories of Expenses'" [yAxisLabel]="'Total cost from budgets'"></app-line-chart>
+                        <app-line-chart></app-line-chart>
                     </mat-card-content>
                 </mat-card>
             </div>
             <div class="income-vs-expense-bar-graph">
                 <mat-card>
                     <mat-card-content>
-                        <app-bar-chart [xAxisLabel]="'Name of Expense'" [yAxisLabel]="'Amount'" [chartData]="barChartData"></app-bar-chart>
+                        <app-bar-chart></app-bar-chart>
                     </mat-card-content>
                 </mat-card>
             </div>
@@ -85,7 +80,7 @@
             <div class="pie-chart">
                 <mat-card>
                     <mat-card-content>
-                        <app-pie-chart [chartData]="barChartData"></app-pie-chart>
+                        <app-pie-chart [chartData]="dataSource"></app-pie-chart>
                     </mat-card-content>
                 </mat-card>
             </div>

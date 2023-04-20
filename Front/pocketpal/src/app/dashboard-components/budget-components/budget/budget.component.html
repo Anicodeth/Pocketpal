@@ -5,9 +5,8 @@
                 <div class="title">
                     <h2>Current Ongoing Budgets</h2>
                 </div>
-                <div *ngFor="let budget of budgets; let i = index" class="charts-row">
-                    Budget {{ i }}
-                    <app-pie-chart [chartData]="getPieChartData(i)"></app-pie-chart>
+                <div class="charts-row">
+                    <app-pie-chart [chartData]="budgetData"></app-pie-chart>
                 </div>
             </div>
         </mat-card-content>
