@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   {path: 'dashboard', children: [
     {path: 'detail/:month', component: BudgetDetailComponent},
-    {path: 'expences/:month/:year', component: AddExpenseComponent}
+    {path: 'expenses/:month/:year', component: AddExpenseComponent}
   ]}
 ];
 
