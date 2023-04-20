@@ -10,16 +10,17 @@ import { AppserviceService } from 'src/app/services/appservice.service';
 export class MainDashboardComponent implements OnInit {
   public profileData: any;
 
-  public dataSource: any;
-  public displayedColumns: string[] = ['name', 'values'];
+  public dataSource: any[];
   public totalBudgets: number = 10;
   public netIncome: number = 10;
+  public displayedColumns: string[];
 
   constructor(
     private apiService: ApiService,
     private appService: AppserviceService
   ) {
     this.dataSource = this.apiService.getBudgetData();
+    this.displayedColumns = ['name', 'category', 'amount'];
   }
 
   ngOnInit(): void {
