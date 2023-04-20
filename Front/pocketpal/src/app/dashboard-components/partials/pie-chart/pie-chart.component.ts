@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./pie-chart.component.css']
 })
 export class PieChartComponent {
-  @Input() chartData: any;
+  @Input() chartData: string | any;
 }
