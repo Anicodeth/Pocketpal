@@ -14,7 +14,7 @@
             </div>
         </mat-card-content>
     </mat-card>
-    <div class="main">
+    <div class="main buttons">
         <h2>Choose Your Action</h2>
         <div class="action-buttons-row">
             <button (click)="onAddBudget()" class="action-button" mat-stroked-button extended>
@@ -25,7 +25,7 @@
 
     </div>
 </div>
-<div *ngIf="currentDisplay != 'main'">
+<div  *ngIf="currentDisplay != 'main'">
     <button (click)="onSeeBudget()" class="back-button" mat-stroked-button extended>
         <mat-icon>arrow_back</mat-icon>
         Back
