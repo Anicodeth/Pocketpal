@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Budget Details</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <app-pie-chart [chartData]="getPieChartData()"></app-pie-chart>
+        <div class="expense-cards" *ngFor="let expense for Budget.expenses; let i=index">
+          <div class="expense-card">
+            <div class="expense-amount">{{expense.amount}}</div>
+            <div class="expense-info">
+              <div class="expense-name">{{expense.name}}</div>
+              <div class="expense-category">{{expense.category}}</div>
+            </div>
+            <button class="delete-expense-button" (click)="deleteExpense(1,i)">Delete Expense</button>
+          </div>
+          <!-- add more expense cards as needed -->
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="budget-card">
+          <div class="budget-name">Monthly Expenses</div>
+          <div class="budget-date">{{Budget.month}} {{Budget.year}}</div>
+          <div class="budget-balance">{{Budget.balance}}</div>
+        </div>
+        <button class="add-expense-button" routerLink="/dashboard/expenses/{{Budget.month}}/{{Budget.year}}">Add Expense</button>
+      </div>
+    </div>
+  </body>
+</html>
