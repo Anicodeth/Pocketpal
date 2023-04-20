@@ -1,1 +1,22 @@
-<p>add-expense works!</p>
+<form  [formGroup]="expenseForm"
+onsubmit="event.preventDefault()"
+(submit)="addExpense()">
+    <div>
+      <label for="name">Name:</label>
+      <input formControlName="Name" type="text" id="name" name="name" >
+    </div>
+    <div>
+      <label for="amount">Amount:</label>
+      <input formControlName="amount" type="number" id="amount" name="amount" >
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select formControlName="catagory" id="category" name="category">
+        <option value="food">Food</option>
+        <option value="transportation">Transportation</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="utilities">Utilities</option>
+        <option value="miscellaneous">Miscellaneous</option>
+      </select>
+    </div>
+  </form>

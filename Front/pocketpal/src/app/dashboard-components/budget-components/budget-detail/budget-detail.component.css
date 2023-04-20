@@ -1,0 +1,137 @@
+/* overall container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  /* left side */
+  .left-side {
+    flex: 1;
+    margin-right: 50px;
+  }
+  
+  /* budget image */
+  .left-side img {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  /* expense cards */
+  .expense-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* expense card */
+  .expense-card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: calc(33.33% - 20px);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .expense-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* expense amount */
+  .expense-amount {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2ecc71;
+    margin-right: 20px;
+  }
+  
+  /* expense info */
+  .expense-info {
+    flex: 1;
+  }
+  
+  /* expense name */
+  .expense-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  /* expense category */
+  .expense-category {
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  /* right side */
+  .right-side {
+    flex: 1;
+  }
+  
+  /* budget card */
+  .budget-card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* budget name */
+  .budget-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* budget date */
+.budget-date {
+    font-size: 18px;
+    color: #aaa;
+    margin-bottom: 10px;
+    }
+    
+    /* budget balance */
+    .budget-balance {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2ecc71;
+    }
+    
+    /* add expense button */
+    .add-expense-button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+    
+    .add-expense-button:hover {
+    background-color: #27ae60;
+    }
+    
+    /* responsive design */
+    @media screen and (max-width: 768px) {
+    .container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 30px;
+    }
+    
+    .left-side {
+    margin-right: 0;
+    margin-bottom: 30px;
+    }
+    
+    .expense-card {
+    width: 100%;
+    margin-bottom: 20px;
+    }
+    }
