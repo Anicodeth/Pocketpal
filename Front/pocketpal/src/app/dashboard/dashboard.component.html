@@ -27,8 +27,12 @@
                 <span>{{ components[currentlyOnDisplay] }}</span>
             </div>
             <div class="right">
-                <button mat-raised-button>
+                <button style="margin: 0 10px;" mat-stroked-button>
                     <mat-icon>person</mat-icon>
+                    Hello, {{ profileData.name }}.
+                </button>
+                <button mat-raised-button>
+                    <mat-icon>exit_to_app</mat-icon>
                     Logout
                 </button>
             </div>

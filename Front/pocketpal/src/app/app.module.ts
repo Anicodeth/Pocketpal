@@ -47,6 +47,7 @@ import { AddExpenseComponent } from './dashboard-components/budget-components/ad
 import { ApiService } from './services/api.service';
 import { AiService } from './services/ai.service';
 import { MainDashboardComponent } from './dashboard-components/main-dashboard/main-dashboard.component';
+import { AppserviceService } from './services/appservice.service';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { MainDashboardComponent } from './dashboard-components/main-dashboard/ma
     ChatService,
     ApiService,
     AiService,
+    AppserviceService
   ],
   bootstrap: [
     AppComponent,
