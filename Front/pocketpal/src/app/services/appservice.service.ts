@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -7,33 +8,38 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AppserviceService {
   constructor(private http: HttpClient) {}
 
-  userData: any;
-  token = sessionStorage.getItem('auth_token')
+  public profileData: any;
+  public userData: any;
+  private jwt = sessionStorage.getItem('jwt');
+
+  refreshToken() {
+    this.jwt = sessionStorage.getItem('jwt');
+  }
 
   signUp(name: string, email: string, password: string) {
     let body = { name: name, password: password, email: email };
-    console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signup', body);
   }
 
   signIn(email: string, password: string) {
 
     let body = { email: email, password: password };
-    console.log(body);
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
   }
 
-  getProfile() {
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
-    return this.http.get('https://Pocket-pal-api.vercel.app/profile', {
-      headers: header,
-    });
+  getProfile(): Observable<any> {
+    this.refreshToken();
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
+
+    return this.http.get('https://Pocket-pal-api.vercel.app/profile', { headers: header }); 
   }
 
 
   editProfile( firstname: string, lastname: string, email: string, password: string) {
+    this.refreshToken();
+
     const body = { firstname: firstname, lastname: lastname, email: email, password: password};
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
     return this.http.put('https://Pocket-pal-api.vercel.app/profile', body, {
       headers: header,
     });
@@ -46,7 +52,9 @@ export class AppserviceService {
     amount: number,
     category: string
   ) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    this.refreshToken();
+
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
     let body = { name: name, amount: amount, category: category };
     return this.http.post(
       `https://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
@@ -55,7 +63,9 @@ export class AppserviceService {
   }
 
   getBudget( month: number, year: number, balance: string) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    this.refreshToken();
+
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
     let body = { month: month, year: year, balance: balance };
     return this.http.post('https://Pocket-pal-api.vercel.app/budgets', body, {
       headers: header,
@@ -63,7 +73,9 @@ export class AppserviceService {
   }
 
   deleteExpense( budget_index: any, expense_index: any) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    this.refreshToken();
+
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
     return this.http.delete(
       `https://Pocket-pal-api.vercel.app/budget/${budget_index}/expenses/${expense_index}`,
       { headers: header }
@@ -71,7 +83,9 @@ export class AppserviceService {
   }
 
   deletBudget( budget_index: any) {
-    const header = new HttpHeaders({ Authorization: `Bearer ${this.token}` });
+    this.refreshToken();
+
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
     return this.http.delete(
       `https://Pocket-pal-api.vercel.app/budget/${budget_index}`,
       { headers: header }
@@ -79,6 +93,8 @@ export class AppserviceService {
   }
 
   getAIprompt(prompt: string) {
+    this.refreshToken();
+
     return this.http.get(`https://Pocket-pal-api.vercel.app/${prompt}`);
   }
 }

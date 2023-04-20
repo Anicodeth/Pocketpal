@@ -33,8 +33,12 @@
                 <span>{{ components[currentlyOnDisplay] }}</span>
             </div>
             <div class="right">
-                <button mat-raised-button>
+                <button style="margin: 0 10px;" mat-stroked-button>
                     <mat-icon>person</mat-icon>
+                    Hello, {{ profileData.name }}.
+                </button>
+                <button mat-raised-button>
+                    <mat-icon>exit_to_app</mat-icon>
                     Logout
                 </button>
             </div>
@@ -52,5 +56,9 @@
         <div class="ai-chat-container" *ngIf="currentlyOnDisplay == 3">
             <app-chat></app-chat>
         </div>
+        <div *ngIf="currentlyOnDisplay == 2">
+            <app-literacy-links></app-literacy-links>
+        </div>
+
     </mat-sidenav-content>
 </mat-sidenav-container>
