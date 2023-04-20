@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService } from '../services/data.service';
-import { AppserviceService } from '../services/appservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +10,6 @@ import { AppserviceService } from '../services/appservice.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  profileData: any;
-  expenses: any;
-
   dataSource: MatTableDataSource<any> | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -22,8 +18,7 @@ export class DashboardComponent implements OnInit {
   currentlyOnDisplay = 0;
 
   constructor(
-    private dataService: DataService,
-    private appService: AppserviceService
+    private dataService: DataService
     ) {
   }
 
@@ -31,20 +26,6 @@ export class DashboardComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.dataService.getData());
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-    this.appService.getProfile().
-    subscribe((response) => {
-      this.profileData = response;
-    });
-  }
-  
-  get budgets(): any[] {
-    let allBudgets: any[] = [];
-    for (let i = 0; i < this.profileData.budgets.length; i++) {
-      allBudgets.push(this.profileData.budgets[i]);
-    }
-
-    return allBudgets;
   }
   
   showDashboard() {

@@ -102,7 +102,6 @@ import { BudgetDetailComponent } from './dashboard-components/budget-components/
     ChatService,
     ApiService,
     AiService,
-    AppserviceService
   ],
   bootstrap: [
     AppComponent,
