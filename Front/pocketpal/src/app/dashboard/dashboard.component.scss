@@ -42,12 +42,6 @@ mat-form-field {
 
 }
 
-// @media screen and ( max-width:730px ) {
-//   .sidenav {
-//     width: 60%;
-//   }
-// }
-
 .header-logo {
   text-align: center;
   font-size: 2rem;
@@ -77,4 +71,31 @@ mat-form-field {
   padding: 3rem;
   color: white;
   box-shadow: 4px 0 8px rgb(0, 0, 0);
+  
 }
+@media screen and ( max-width:800px ) {
+    .main-bar{
+      padding: 0;
+      flex-direction: column;
+      gap: 10px;
+      height: fit-content;
+      padding: 12px;
+      align-items: center;
+    }
+    .left span {
+      font-size: 1.2rem;
+    }
+    
+    .right {
+      margin-right: 1rem;
+    }
+    .sidenav .header-logo{
+      font-size: 1.2rem;
+    }
+    .sidenav {
+      width: 30%;
+    }
+    .sidenav .tabs-list a span{
+      font-size: 1rem;
+    }
+  }

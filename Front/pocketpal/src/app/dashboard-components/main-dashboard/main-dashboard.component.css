@@ -50,7 +50,26 @@
     min-width: 70%;
 }
 
-.hidden {
-    display: none;
-    transition: opacity 0.7s ease-in-out;
+@media screen and ( max-width:500px ) {
+    
+.tile {
+    min-width: 15%;
 }
+
+.income-vs-expense-line-graph {
+    min-width: 25%;
+}
+
+.income-vs-expense-bar-graph {
+    min-width: 7%;
+}
+
+.pie-chart {
+    min-width: 10%;
+    overflow: hidden;
+}
+
+.expenses-table {
+    min-width: 20%;
+}
+  }
