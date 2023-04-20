@@ -48,6 +48,7 @@ import { ApiService } from './services/api.service';
 import { AiService } from './services/ai.service';
 import { MainDashboardComponent } from './dashboard-components/main-dashboard/main-dashboard.component';
 import { AppserviceService } from './services/appservice.service';
+import { LiteracyLinksComponent } from './dashboard-components/literacy-links/literacy-links.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { AppserviceService } from './services/appservice.service';
     AddIncomeComponent,
     AddExpenseComponent,
     MainDashboardComponent,
+    LiteracyLinksComponent,
   ],
   imports: [
     BrowserModule,
