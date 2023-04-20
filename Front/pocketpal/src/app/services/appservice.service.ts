@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,14 +25,17 @@ export class AppserviceService {
   signIn(email: string, password: string) {
 
     let body = { email: email, password: password };
+
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
-  }
+    }
 
   getProfile(): Observable<any> {
     this.refreshToken();
     const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
 
-    return this.http.get('https://Pocket-pal-api.vercel.app/profile', { headers: header }); 
+    return this.http.get('https://Pocket-pal-api.vercel.app/profile', { headers: header }).pipe(
+      catchError(error => throwError(error))
+    );; 
   }
 
 

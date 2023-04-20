@@ -50,7 +50,7 @@ export class LoginPageComponent {
         this.isButtonDisabled = false;
         this.service.userData = response;
 
-        sessionStorage.setItem('auth_token', response.token);
+        sessionStorage.setItem('jwt', response.token);
 
         this.router.navigateByUrl("/dashboard")
 
