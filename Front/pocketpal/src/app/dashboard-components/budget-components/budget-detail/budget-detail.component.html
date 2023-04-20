@@ -7,8 +7,8 @@
     <div class="container">
       <div class="left-side">
         <app-pie-chart [chartData]="getPieChartData()"></app-pie-chart>
-        <div class="expense-cards" *ngFor="let expense for Budget.expenses; let i=index">
-          <div class="expense-card">
+        <div class="expense-cards" >
+          <div class="expense-card" *ngFor="let expense for Budget.expenses; let i=index">
             <div class="expense-amount">{{expense.amount}}</div>
             <div class="expense-info">
               <div class="expense-name">{{expense.name}}</div>

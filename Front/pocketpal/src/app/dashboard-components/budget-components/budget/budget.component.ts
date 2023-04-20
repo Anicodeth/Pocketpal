@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AppserviceService } from 'src/app/services/appservice.service'
 
@@ -14,7 +15,8 @@ export class BudgetComponent {
 
   constructor(
     private apiService: ApiService,
-    private appService: AppserviceService
+    private appService: AppserviceService,
+    private router: Router
   ) {
     this.budgetData = this.apiService.getBudgetData();
   }
@@ -44,6 +46,7 @@ export class BudgetComponent {
         value: expense.amount
       })
     });
+    console.log(data)
 
     return data;
   }
@@ -54,6 +57,8 @@ export class BudgetComponent {
   }
 
   onAddBudget() {
+
+    this.router.navigateByUrl("/dashboard/addBudget")
     this.currentDisplay = 'addBudget';
   }
 

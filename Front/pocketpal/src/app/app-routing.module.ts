@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BudgetDetailComponent } from './dashboard-components/budget-components/budget-detail/budget-detail.component';
 import { AddExpenseComponent } from './dashboard-components/budget-components/add-expense/add-expense.component';
+import { AddBudgetComponent } from './dashboard-components/budget-components/add-budget/add-budget.component';
 
 const routes: Routes = [
   {path: '', redirectTo: "Home", pathMatch: "full"},
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   {path: 'dashboard', children: [
     {path: 'detail/:month', component: BudgetDetailComponent},
-    {path: 'expenses/:month/:year', component: AddExpenseComponent}
+    {path: 'expenses/:month/:year', component: AddExpenseComponent},
+    {path: "addBudget", component: AddBudgetComponent}
   ]}
 ];
 

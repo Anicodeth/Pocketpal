@@ -22,7 +22,6 @@ export class AppserviceService {
   }
 
   signIn(email: string, password: string) {
-
     let body = { email: email, password: password };
     return this.http.post('https://Pocket-pal-api.vercel.app/signin', body);
   }
@@ -58,6 +57,20 @@ export class AppserviceService {
     let body = { name: name, amount: amount, category: category };
     return this.http.post(
       `https://Pocket-pal-api.vercel.app,body/budgets/${month}/${year}/expenses`,
+      { headers: header }
+    );
+  }
+  addBudget(
+    month: any,
+    year: any,
+    budget: any,
+  ) {
+    this.refreshToken();
+
+    const header = new HttpHeaders({ Authorization: `Bearer ${this.jwt}` });
+    let body = { month: month, year: year, budget: budget};
+    return this.http.post(
+      `https://Pocket-pal-api.vercel.app/budgets`,body,
       { headers: header }
     );
   }
